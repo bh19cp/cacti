@@ -183,6 +183,9 @@
     },
     {
       "path": "./packages/cactus-plugin-persistence-fabric/tsconfig.json"
+    },
+    {
+      "path": "./packages/cactus-plugin-ichaingov/tsconfig.json"
     }
   ],
   "compilerOptions": {

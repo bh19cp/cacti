@@ -8496,6 +8496,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@hyperledger/cactus-plugin-ichaingov@workspace:packages/cactus-plugin-ichaingov":
+  version: 0.0.0-use.local
+  resolution: "@hyperledger/cactus-plugin-ichaingov@workspace:packages/cactus-plugin-ichaingov"
+  languageName: unknown
+  linkType: soft
+
 "@hyperledger/cactus-plugin-keychain-aws-sm@workspace:packages/cactus-plugin-keychain-aws-sm":
   version: 0.0.0-use.local
   resolution: "@hyperledger/cactus-plugin-keychain-aws-sm@workspace:packages/cactus-plugin-keychain-aws-sm"

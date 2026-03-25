@@ -1,0 +1,29 @@
+{
+  "name": "@hyperledger/cactus-plugin-ichaingov",
+  "version": "1.0.0",
+  "description": "Allows gateways to read from governance events on chain and applies updates",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyperledger-cacti/cacti.git"
+  },
+  "keywords": [
+    "Hyperledger",
+    "Cacti",
+    "Integration",
+    "Blockchain",
+    "Distributed",
+    "Ledger",
+    "Technology",
+    "Governance"
+  ],
+  "author": "Ana Sa",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/hyperledger-cacti/cacti/issues"
+  },
+  "homepage": "https://github.com/hyperledger-cacti/cacti#readme"
+}
