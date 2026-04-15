@@ -9260,6 +9260,7 @@ __metadata:
     typescript-optional: "npm:2.0.1"
     uuid: "npm:10.0.0"
     web3: "npm:4.4.0"
+    web3-eth-abi: "npm:^4.4.1"
     web3-utils: "npm:1.6.1"
   languageName: unknown
   linkType: soft
