@@ -47,11 +47,9 @@ import { AddressInfo } from "node:net";
 import HelloWorldContract from "../../../solidity/generated/HelloWorldContract.sol/HelloWorldContract.json";
 import { IOracleListenerBase } from "../../../../main/typescript/cross-chain-mechanisms/oracle/oracle-types";
 
-import fs from "fs";
-import path from "path";
 import { createMigrationSource } from "../../../../main/typescript/database/knex-migration-source";
-import { knexRemoteInstance } from "../../../../main/typescript/database/knexfile-remote";
 import { knexLocalInstance } from "../../../../main/typescript/database/knexfile";
+import { knexRemoteInstance } from "../../../../main/typescript/database/knexfile-remote";
 
 const logLevel: LogLevelDesc = "DEBUG";
 const log = LoggerProvider.getOrCreate({
