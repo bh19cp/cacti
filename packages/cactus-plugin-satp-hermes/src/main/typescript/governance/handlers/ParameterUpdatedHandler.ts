@@ -1,10 +1,10 @@
 import { IGovernanceEventHandler, GovernanceEvent } from "../governance-types";
 import { Logger, LoggerProvider } from "@hyperledger/cactus-common";
 import {
-  GatewayPolicyConfig,
-  parsePolicyValue,
   EXPECTED_POLICY_KEYS,
   PolicyKey,
+  RuntimePolicy,
+  parsePolicyEntry,
 } from "../governance-policy-config";
 import { SATPGateway } from "../../plugin-satp-hermes-gateway";
 
@@ -44,24 +44,23 @@ export class ParameterUpdatedHandler implements IGovernanceEventHandler {
       return;
     }
 
-    let parsed: GatewayPolicyConfig[PolicyKey];
+    let parsedPolicy: Partial<RuntimePolicy>;
     try {
-      parsed = parsePolicyValue(key as PolicyKey, BigInt(newValue));
+      parsedPolicy = parsePolicyEntry(key as PolicyKey, BigInt(newValue));
     } catch (err) {
       this.log.error(
         `${fnTag}: Failed to parse key=${key} value=${newValue}: ${err}`,
       );
       return;
     }
-
     this.log.info(
-      `${fnTag}: Applying policy update — key=${key} newValue=${parsed}`,
+      `${fnTag}: Applying policy update — key=${key} parsed=${JSON.stringify(
+        parsedPolicy,
+        (_, v) => (typeof v === "bigint" ? v.toString() : v),
+      )}`,
     );
-    
-    await this.gateway.applyPolicyConfig({
-      [key]: parsed,
-    } as Partial<GatewayPolicyConfig>);
+    await this.gateway.applyPolicyConfig(parsedPolicy);
 
-    this.log.info(`${fnTag}: Policy key '${key}' updated to '${parsed}'`);
+    this.log.info(`${fnTag}: Policy key '${key}' updated successfully`);
   }
 }

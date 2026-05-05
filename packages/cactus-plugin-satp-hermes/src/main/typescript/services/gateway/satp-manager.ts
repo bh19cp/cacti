@@ -111,6 +111,14 @@ import {
 import { MonitorService } from "../monitoring/monitor";
 import { context, SpanStatusCode } from "@opentelemetry/api";
 import type { AdapterManager } from "../../adapters/adapter-manager";
+import {
+  IGatewayComplianceVerifier,
+  IGatewayPolicyManager,
+} from "../../governance/governance-types";
+import {
+  DEFAULT_RUNTIME_POLICY,
+  RuntimePolicy,
+} from "../../governance/governance-policy-config";
 
 export interface ISATPManagerOptions {
   logLevel?: LogLevelDesc;
@@ -125,6 +133,8 @@ export interface ISATPManagerOptions {
   claimFormat?: ClaimFormat;
   monitorService: MonitorService;
   adapterManager?: AdapterManager;
+  gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+  gatewayPolicyManager?: IGatewayPolicyManager;
 }
 export class SATPManager {
   public static readonly CLASS_NAME = "SATPManager";
@@ -156,6 +166,9 @@ export class SATPManager {
 
   private readonly claimFormat: ClaimFormat;
 
+  private gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+  private gatewayPolicyManager?: IGatewayPolicyManager;
+
   constructor(public readonly options: ISATPManagerOptions) {
     const fnTag = `${SATPManager.CLASS_NAME}#constructor()`;
     Checks.truthy(options, `${fnTag} arg options`);
@@ -179,6 +192,8 @@ export class SATPManager {
     this.localRepository = options.localRepository;
     this.remoteRepository = options.remoteRepository;
     this.claimFormat = options.claimFormat || ClaimFormat.DEFAULT;
+    this.gatewayComplianceVerifier = options.gatewayComplianceVerifier;
+    this.gatewayPolicyManager = options.gatewayPolicyManager;
     const satpLoggerConfig: IGatewayPersistenceConfig = {
       localRepository: this.localRepository,
       remoteRepository: this.remoteRepository,
@@ -413,6 +428,7 @@ export class SATPManager {
           dbLogger: this.dbLogger,
           claimFormat: claimFormat,
           monitorService: this.monitorService,
+          gatewayComplianceVerifier: this.gatewayComplianceVerifier,
         }));
       } catch (error) {
         span.setStatus({
@@ -1228,5 +1244,22 @@ export class SATPManager {
         span.end();
       }
     });
+  }
+
+  public getRuntimePolicy(): RuntimePolicy {
+    const fnTag = `${SATPManager.CLASS_NAME}#getRuntimePolicy()`;
+
+    if (this.gatewayPolicyManager) {
+      const policyFromManager = this.gatewayPolicyManager.getRuntimePolicy();
+      this.logger.debug(
+        `${fnTag} using gatewayPolicyManager; lockExpirationTime=${policyFromManager.lockExpirationTime}`,
+      );
+      return policyFromManager;
+    }
+
+    this.logger.debug(
+      `${fnTag} gatewayPolicyManager is NOT set; falling back to DEFAULT_RUNTIME_POLICY (lockExpirationTime=${DEFAULT_RUNTIME_POLICY.lockExpirationTime})`,
+    );
+    return { ...DEFAULT_RUNTIME_POLICY };
   }
 }

@@ -54,15 +54,8 @@ import {
   TaskNotFoundError,
   UnsupportedNetworkError,
 } from "../common/errors";
-import { LedgerType } from "@hyperledger/cactus-core-api";
 import { v4 as uuidv4 } from "uuid";
-import { IOracleEVMOptions, OracleEVM } from "./implementations/oracle-evm";
-import { PluginRegistry } from "@hyperledger/cactus-core";
-import { PluginKeychainMemory } from "@hyperledger/cactus-plugin-keychain-memory";
-import {
-  IOracleFabricOptions,
-  OracleFabric,
-} from "./implementations/oracle-fabric";
+
 import { OracleAbstract } from "./oracle-abstract";
 import { ClaimFormat } from "../../generated/proto/cacti/satp/v02/common/message_pb";
 import {
@@ -79,11 +72,11 @@ import {
 } from "../../public-api";
 import { OracleExecutionLayer } from "./oracle-execution-layer";
 import { updateOracleOperation } from "./oracle-utils";
-import { IOracleBesuOptions, OracleBesu } from "./implementations/oracle-besu";
 import { OracleSchedulerManager } from "./oracle-scheduler-manager";
 import { MonitorService } from "../../services/monitoring/monitor";
 import { context, SpanStatusCode } from "@opentelemetry/api";
 import { OraclePersistence } from "../../database/oracle-persistence";
+import { OracleFactory } from "./oracle-factory";
 
 export interface IOracleManagerOptions {
   logLevel?: LogLevelDesc;
@@ -222,112 +215,11 @@ export class OracleManager {
             0,
           );
 
-          let oracle: OracleAbstract;
-          switch (oracleNetworkOptions.networkIdentification.ledgerType) {
-            case LedgerType.Besu1X:
-            case LedgerType.Besu2X:
-              this.logger.debug(`${fnTag}, Deploying Besu Oracle...`);
-              this.logger.debug(
-                `${fnTag}, Besu Oracle Network Options: ${JSON.stringify(
-                  oracleNetworkOptions,
-                )}`,
-              );
-              const besuNetworkOptions =
-                oracleNetworkOptions as unknown as IOracleBesuOptions;
-              oracle = new OracleBesu({
-                ...besuNetworkOptions,
-                connectorOptions: {
-                  ...besuNetworkOptions.connectorOptions,
-                  instanceId: uuidv4(),
-                  pluginRegistry: new PluginRegistry({
-                    plugins: [],
-                  }),
-                  logLevel: this.logLevel,
-                },
-                monitorService: this.monitorService,
-                logLevel: this.logLevel,
-              });
-              break;
-            case LedgerType.Ethereum:
-              this.logger.debug(`${fnTag}, Deploying Ethereum Oracle...`);
-              this.logger.debug(
-                `${fnTag}, Ethereum Oracle Network Options: ${JSON.stringify(
-                  oracleNetworkOptions,
-                )}`,
-              );
-              const ethereumNetworkOptions =
-                oracleNetworkOptions as unknown as IOracleEVMOptions;
-              oracle = new OracleEVM({
-                ...ethereumNetworkOptions,
-                connectorOptions: {
-                  ...ethereumNetworkOptions.connectorOptions,
-                  instanceId: uuidv4(),
-                  pluginRegistry: new PluginRegistry({
-                    plugins: [],
-                  }),
-                  logLevel: this.logLevel,
-                },
-                monitorService: this.monitorService,
-                logLevel: this.logLevel,
-              });
-              break;
-            case LedgerType.Fabric2:
-              this.logger.debug(`${fnTag}, Deploying Fabric Oracle...`);
-              this.logger.debug(
-                `${fnTag}, Fabric Oracle Network Options: ${JSON.stringify(
-                  oracleNetworkOptions,
-                )}`,
-              );
-              if (
-                !(oracleNetworkOptions as Partial<IOracleFabricOptions>)
-                  .userIdentity
-              ) {
-                throw new DeployOracleError(
-                  `${fnTag}, User Identity is required for Fabric network`,
-                );
-              }
-              const keychainEntryKeyBridge = "bridgeKey";
-              const fabricKeychain = new PluginKeychainMemory({
-                instanceId: uuidv4(),
-                keychainId: uuidv4(),
-                logLevel: this.logLevel,
-                backend: new Map([
-                  [
-                    keychainEntryKeyBridge,
-                    JSON.stringify(
-                      (oracleNetworkOptions as Partial<IOracleFabricOptions>)
-                        .userIdentity,
-                    ),
-                  ],
-                ]),
-              });
-              const fabricNetworkOptions = {
-                ...oracleNetworkOptions,
-                connectorOptions: {
-                  ...(oracleNetworkOptions as Partial<IOracleFabricOptions>)
-                    .connectorOptions,
-                  instanceId: uuidv4(),
-                  pluginRegistry: new PluginRegistry({
-                    plugins: [fabricKeychain],
-                  }),
-                  logLevel: this.logLevel,
-                },
-                signingCredential: {
-                  keychainId: fabricKeychain.getKeychainId(),
-                  keychainRef: keychainEntryKeyBridge,
-                },
-              } as unknown as IOracleFabricOptions;
-              oracle = new OracleFabric({
-                ...fabricNetworkOptions,
-                logLevel: this.logLevel,
-                monitorService: this.monitorService,
-              });
-              break;
-            default:
-              throw new UnsupportedNetworkError(
-                `${fnTag}, ${oracleNetworkOptions.networkIdentification.ledgerType} is not supported`,
-              );
-          }
+          const oracle = OracleFactory.create(oracleNetworkOptions, {
+            monitorService: this.monitorService,
+            logLevel: this.logLevel,
+          });
+
           await oracle.deployContracts();
 
           const networkKey = safeStableStringify(

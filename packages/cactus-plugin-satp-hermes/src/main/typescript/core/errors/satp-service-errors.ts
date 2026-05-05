@@ -1409,3 +1409,45 @@ export class PubKeyError extends SATPInternalError {
     this.errorType = SATPErrorType.PUBLIC_KEY_NOT_FOUND;
   }
 }
+
+/**
+ * Error thrown when a gateway is not compliant (revoked, suspended, or unknown).
+ *
+ * @description
+ * Indicates that a gateway attempting to initiate or participate in a SATP transfer
+ * has been marked as non‑compliant by the governance system. This check occurs during
+ * the Stage‑0 handshake (NewSessionRequest) and prevents any further protocol steps.
+ *
+ * **Governance Integration:**
+ * - The gateway's public key is used to derive its on‑chain identity.
+ * - The `GatewayRegistry` contract is queried (or a cache is consulted) to determine
+ *   if the gateway status is `Active`.
+ * - If the gateway is `Suspended`, `Revoked`, or simply not registered, this error
+ *   is thrown, resulting in a `STATUS_REJECTED` response to the client.
+ *
+ * **SATP Error Type:** `PUBLIC_KEY_NOT_FOUND` (or could be extended with a custom code)
+ *
+ * @class GatewayNotCompliantError
+ * @extends SATPInternalError
+ * @since 0.0.3-beta
+ */
+export class GatewayNotCompliantError extends SATPInternalError {
+  public readonly publicKey: string;
+
+  /**
+   * Creates a new gateway compliance error.
+   *
+   * @param fnTag - Context tag identifying the operation that failed
+   * @param publicKey - The public key of the non‑compliant gateway (hex string)
+   * @param cause - Optional underlying cause
+   */
+  constructor(fnTag: string, publicKey: string, cause?: string | Error | null) {
+    super(
+      `${fnTag}: Gateway with public key ${publicKey} is not compliant (revoked/suspended/unknown)`,
+      cause ?? null,
+      401,
+    );
+    this.publicKey = publicKey;
+    this.errorType = SATPErrorType.GOVERNANCE_GATEWAY_NOT_COMPLIANT;
+  }
+}

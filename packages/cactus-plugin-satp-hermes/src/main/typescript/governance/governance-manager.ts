@@ -2,72 +2,36 @@ import { Logger, LoggerProvider } from "@hyperledger/cactus-common";
 import { context, SpanStatusCode, Exception } from "@opentelemetry/api";
 import { IOracleListenerBase } from "../cross-chain-mechanisms/oracle/oracle-types";
 import {
-  BootstrapResult,
+  ContractInfo,
+  GATEWAY_REGISTRY_EVENT_SUBSCRIPTIONS,
   GovernanceEvent,
   GovernanceEventSubscription,
   GovernanceManagerOptions,
+  IGatewayPolicyManager,
   IGovernanceEventHandler,
-  PolicyRegistryContractConfig,
+  OnChainGateway,
+  OnChainParameter,
+  POLICY_REGISTRY_EVENT_SUBSCRIPTIONS,
 } from "./governance-types";
 import {
+  DEFAULT_RUNTIME_POLICY,
   EXPECTED_POLICY_KEYS,
-  GatewayPolicyConfig,
-  parsePolicyValue,
+  parsePolicyEntry,
   PolicyKey,
+  RuntimePolicy,
 } from "./governance-policy-config";
 import { IEVMOracleEntry } from "../cross-chain-mechanisms/oracle/implementations/oracle-evm";
+import { IGatewayComplianceVerifier } from "./governance-types";
+import { GatewayStatusHandler } from "./handlers/GatewayStatusHandler";
+import { ethers } from "ethers";
+import { SATPGateway } from "../plugin-satp-hermes-gateway";
+import { ParameterUpdatedHandler } from "./handlers/ParameterUpdatedHandler";
+import { OracleAbstract } from "../cross-chain-mechanisms/oracle/oracle-abstract";
+import { OracleFactory } from "../cross-chain-mechanisms/oracle/oracle-factory";
 
-interface OnChainParameter {
-  key: string;
-  value: string | bigint;
-  createdAt: string | bigint;
-  updatedAt: string | bigint;
-  exists: boolean;
-}
-
-const POLICY_REGISTRY_EVENTS: GovernanceEventSubscription[] = [
-  {
-    eventSignature: "ParameterUpdated(string,uint256,uint256,uint256)",
-    paramNames: ["key", "oldValue", "newValue", "timestamp"],
-  },
-  {
-    eventSignature: "ParameterAdded(string,uint256,uint256)",
-    paramNames: ["key", "value", "timestamp"],
-  },
-  {
-    eventSignature: "ParameterRemoved(string,uint256)",
-    paramNames: ["key", "timestamp"],
-  },
-];
-
-const GATEWAY_REGISTRY_EVENTS: GovernanceEventSubscription[] = [
-  {
-    eventSignature: "OrganizationRegistered(address,string,uint256)",
-    paramNames: ["orgAddress", "name", "stake"],
-  },
-  {
-    eventSignature: "OrganizationStatusChanged(address,uint256)",
-    paramNames: ["orgAddress", "status"],
-  },
-  {
-    eventSignature: "OrganizationRemoved(address,uint256)",
-    paramNames: ["orgAddress", "timestamp"],
-  },
-  {
-    eventSignature: "GatewayRegistered(address,string,uint256)",
-    paramNames: ["gatewayAddress", "name", "timestamp"],
-  },
-  {
-    eventSignature: "GatewayStatusChanged(address,uint256)",
-    paramNames: ["gatewayAddress", "status"],
-  },
-  {
-    eventSignature: "GatewayRemoved(address,uint256)",
-    paramNames: ["gatewayAddress", "timestamp"],
-  },
-];
-
-export class GovernanceManager {
+export class GovernanceManager
+  implements IGatewayComplianceVerifier, IGatewayPolicyManager
+{
   public static readonly CLASS_NAME = "GovernanceManager";
   private static readonly POLICY_REGISTRY_CONTRACT_NAME = "PolicyRegistry";
   private static readonly GATEWAY_REGISTRY_CONTRACT_NAME = "GatewayRegistry";
@@ -75,7 +39,10 @@ export class GovernanceManager {
   private readonly log: Logger;
   private readonly handlers = new Map<string, IGovernanceEventHandler>();
   private readonly activeSubscriptions = new Map<string, () => void>();
+  private gatewayStatusCache = new Map<string, number>();
   private started = false;
+  private readonly oracle: OracleAbstract;
+  private runtimePolicy: RuntimePolicy = { ...DEFAULT_RUNTIME_POLICY };
 
   constructor(private readonly options: GovernanceManagerOptions) {
     const fnTag = `${GovernanceManager.CLASS_NAME}#constructor()`;
@@ -86,9 +53,65 @@ export class GovernanceManager {
       level: options.logLevel ?? "INFO",
     });
 
+    this.oracle = OracleFactory.create(options.oracleConfig, {
+      logLevel: options.logLevel ?? "INFO",
+      monitorService: options.monitorService,
+    });
     this.log.info(`${fnTag}: initialized`);
   }
 
+  public async isGatewayCompliant(publicKey: string): Promise<boolean> {
+    const fnTag = `${GovernanceManager.CLASS_NAME}#isGatewayCompliant()`;
+    try {
+      const gatewayAddress = this.publicKeyToAddress(publicKey);
+      if (!gatewayAddress) {
+        this.log.warn(`${fnTag}: Could not derive address from public key`);
+        return false;
+      }
+      const normalizedAddress = gatewayAddress.toLowerCase();
+      if (this.gatewayStatusCache.has(normalizedAddress)) {
+        const status = this.gatewayStatusCache.get(normalizedAddress)!;
+        return status === 0;
+      }
+      this.log.debug(`${fnTag}: checking compliance for ${normalizedAddress}`);
+      const response = await this.oracle.readEntry({
+        contractName: GovernanceManager.GATEWAY_REGISTRY_CONTRACT_NAME,
+        contractAddress: this.options.gatewayRegistry.contractAddress,
+        contractAbi: this.options.gatewayRegistry.contractAbi as any[],
+        contractBytecode: "",
+        methodName: "isGatewayActive",
+        params: [gatewayAddress],
+      } as IEVMOracleEntry);
+
+      const isActive = response.output as unknown as boolean;
+      this.gatewayStatusCache.set(normalizedAddress, isActive ? 0 : 1);
+      return isActive;
+    } catch (err) {
+      this.log.error(
+        `${fnTag}: failed to check compliance for ${publicKey}`,
+        err,
+      );
+      return false;
+    }
+  }
+
+  private publicKeyToAddress(pubKeyHex: string): string {
+    try {
+      const prefixed = pubKeyHex.startsWith("0x")
+        ? pubKeyHex
+        : "0x" + pubKeyHex;
+      const computeAddress =
+        (ethers as any).computeAddress || (ethers as any).utils?.computeAddress;
+      if (!computeAddress) {
+        this.log.error("ethers.computeAddress is not available");
+        return "";
+      }
+      return computeAddress(prefixed);
+    } catch (err) {
+      this.log.debug(`publicKeyToAddress failed for ${pubKeyHex}: ${err}`);
+      return "";
+    }
+  }
   public registerHandler(handler: IGovernanceEventHandler): this {
     const fnTag = `${GovernanceManager.CLASS_NAME}#registerHandler()`;
     if (this.handlers.has(handler.id)) {
@@ -107,7 +130,7 @@ export class GovernanceManager {
     return [...this.handlers.keys()];
   }
 
-  public async start(): Promise<void> {
+  public async start(gateway: SATPGateway): Promise<void> {
     const fnTag = `${GovernanceManager.CLASS_NAME}#start()`;
     const { span, context: ctx } = this.options.monitorService.startSpan(fnTag);
 
@@ -115,8 +138,7 @@ export class GovernanceManager {
       try {
         if (this.started) throw new Error(`${fnTag}: already started`);
 
-        const { policyConfig, missingKeys } =
-          await this.bootstrapPolicyRegistry();
+        const { policy, missingKeys } = await this.bootstrapPolicyRegistry();
 
         if (missingKeys.length > 0) {
           this.log.warn(
@@ -125,21 +147,33 @@ export class GovernanceManager {
         }
 
         this.log.info(
-          `${fnTag}: Applying bootstrapped policy config to gateway`,
+          `${fnTag}: Applying policy registry on-chain config to gateway`,
         );
-        await this.options.gateway.applyPolicyConfig(policyConfig);
+        await gateway.applyPolicyConfig(policy);
         this.log.info(`${fnTag}: Policy config applied`);
 
+        this.log.info(
+          `${fnTag}: Pull on-chain gateway registry information bootstrapped policy config to gateway`,
+        );
+        await this.bootstrapGatewayRegistryInfo();
+        this.log.info(
+          `${fnTag}: pull of gateway registry information completed`,
+        );
+
+        this.registerHandler(new GatewayStatusHandler(this.gatewayStatusCache));
+        this.log.info(`${fnTag}: Registered gateway status handler`);
+        this.registerHandler(new ParameterUpdatedHandler(gateway));
+        this.log.info(`${fnTag}: Registered Parameter Updated handler`);
         await this.attachContractSubscriptions(
           GovernanceManager.POLICY_REGISTRY_CONTRACT_NAME,
           this.options.policyRegistry,
-          POLICY_REGISTRY_EVENTS,
+          POLICY_REGISTRY_EVENT_SUBSCRIPTIONS,
         );
 
         await this.attachContractSubscriptions(
           GovernanceManager.GATEWAY_REGISTRY_CONTRACT_NAME,
           this.options.gatewayRegistry,
-          GATEWAY_REGISTRY_EVENTS,
+          GATEWAY_REGISTRY_EVENT_SUBSCRIPTIONS,
         );
 
         this.started = true;
@@ -170,11 +204,14 @@ export class GovernanceManager {
     return this.started;
   }
 
-  private async bootstrapPolicyRegistry(): Promise<BootstrapResult> {
+  private async bootstrapPolicyRegistry(): Promise<{
+    policy: Partial<RuntimePolicy>;
+    missingKeys: string[];
+  }> {
     const fnTag = `${GovernanceManager.CLASS_NAME}#bootstrapPolicyRegistry()`;
     this.log.info(`${fnTag}: Fetching all parameters from PolicyRegistry...`);
 
-    const response = await this.options.oracle.readEntry({
+    const response = await this.oracle.readEntry({
       contractName: "PolicyRegistry",
       contractAddress: this.options.policyRegistry.contractAddress,
       contractAbi: this.options.policyRegistry.contractAbi as any[],
@@ -183,7 +220,6 @@ export class GovernanceManager {
       params: [],
     } as IEVMOracleEntry);
 
-    this.log.info(`${fnTag}: response to get all parameters: ${response}`);
     const onChain = response.output as unknown as OnChainParameter[];
     const onChainMap = new Map(
       onChain.filter((p) => p.exists).map((p) => [p.key, BigInt(p.value)]),
@@ -194,7 +230,7 @@ export class GovernanceManager {
         `[${[...onChainMap.keys()].join(", ")}]`,
     );
 
-    const partial: Partial<GatewayPolicyConfig> = {};
+    const policy: Partial<RuntimePolicy> = {};
     const missingKeys: string[] = [];
 
     for (const key of EXPECTED_POLICY_KEYS) {
@@ -203,37 +239,77 @@ export class GovernanceManager {
         missingKeys.push(key);
         continue;
       }
-
       try {
-        (partial as Record<string, unknown>)[key] = parsePolicyValue(
-          key,
-          rawValue,
-        );
-        this.log.debug(
-          `${fnTag}: Parsed key=${key} raw=${rawValue} → ${partial[key as PolicyKey]}`,
-        );
+        Object.assign(policy, parsePolicyEntry(key as PolicyKey, rawValue));
+        this.log.debug(`${fnTag}: Parsed key=${key} raw=${rawValue}`);
       } catch (err) {
         this.log.error(`${fnTag}: Failed to parse key=${key}: ${err}`);
         missingKeys.push(key);
       }
     }
 
-    return {
-      policyConfig: partial as GatewayPolicyConfig,
-      missingKeys,
-    };
+    return { policy, missingKeys };
+  }
+  public applyPolicyConfig(patch: Partial<RuntimePolicy>): void {
+    Object.assign(this.runtimePolicy, patch);
+    this.log.info(
+      `${GovernanceManager.CLASS_NAME}#applyPolicyConfig(): applied ${JSON.stringify(
+        patch,
+        (_, v) => (typeof v === "bigint" ? v.toString() : v),
+      )}`,
+    );
+  }
+
+  public getRuntimePolicy(): RuntimePolicy {
+    return { ...this.runtimePolicy };
+  }
+
+  private async bootstrapGatewayRegistryInfo(): Promise<void> {
+    const fnTag = `${GovernanceManager.CLASS_NAME}#bootstrapGatewayRegistryInfo()`;
+    this.log.info(
+      `${fnTag}: Pull on-chain gateway registry information bootstrapped policy config to gateway`,
+    );
+
+    try {
+      const resp = await this.oracle.readEntry({
+        contractName: GovernanceManager.GATEWAY_REGISTRY_CONTRACT_NAME,
+        contractAddress: this.options.gatewayRegistry.contractAddress,
+        contractAbi: this.options.gatewayRegistry.contractAbi as any[],
+        contractBytecode: "",
+        methodName: "getAllGateways",
+        params: [],
+      } as IEVMOracleEntry);
+
+      const gateways = resp.output as unknown as OnChainGateway[];
+
+      for (const gw of gateways) {
+        this.gatewayStatusCache.set(
+          gw.gatewayAddress.toLowerCase(),
+          Number(gw.status),
+        );
+      }
+
+      this.log.info(
+        `${fnTag}: Bootstrapped ${gateways.length} gateway(s) into cache`,
+      );
+    } catch (err: any) {
+      this.log.error(
+        `${fnTag}: Failed to bootstrap gateway registry info`,
+        err,
+      );
+    }
   }
 
   private async attachContractSubscriptions(
     contractName: string,
-    contract: PolicyRegistryContractConfig,
+    contract: ContractInfo,
     events: GovernanceEventSubscription[],
   ): Promise<void> {
     for (const eventSub of events) {
       const key = `${contract.contractAddress}::${eventSub.eventSignature}`;
       if (this.activeSubscriptions.has(key)) continue;
 
-      const unsubscribe = await this.options.oracle.subscribeContractEvent(
+      const unsubscribe = await this.oracle.subscribeContractEvent(
         {
           contractName,
           contractAbi: contract.contractAbi,
@@ -322,5 +398,22 @@ export class GovernanceManager {
         );
       }
     });
+  }
+  /**
+   * Returns the cached status of a gateway.
+   * @param gatewayAddress - The Ethereum address of the gateway (0x…).
+   * @returns The status value (0 = active, 1 = inactive) or `undefined` if the address is not in the cache.
+   */
+  public getCachedGatewayStatus(gatewayAddress: string): number | undefined {
+    return this.gatewayStatusCache.get(gatewayAddress.toLowerCase());
+  }
+
+  /**
+   * Checks whether a gateway address is present in the local status cache.
+   * @param gatewayAddress - The Ethereum address of the gateway (0x…).
+   * @returns `true` if the address exists in the cache, `false` otherwise.
+   */
+  public isGatewayCached(gatewayAddress: string): boolean {
+    return this.gatewayStatusCache.has(gatewayAddress.toLowerCase());
   }
 }

@@ -107,7 +107,12 @@ import { ExtensionConfig } from "./services/validation/config-validating-functio
 import { AdapterManager } from "./adapters/adapter-manager";
 import type { AdapterLayerConfiguration } from "./adapters/adapter-config";
 import { GovernanceManager } from "./governance/governance-manager";
-import { GatewayPolicyConfig } from "./governance/governance-policy-config";
+import {
+  IGatewayComplianceVerifier,
+  IGatewayPolicyApplier,
+  IGatewayPolicyManager,
+} from "./governance/governance-types";
+import { RuntimePolicy } from "./governance/governance-policy-config";
 
 /**
  * SATP Gateway Configuration Interface - Complete configuration for fault-tolerant gateway.
@@ -358,6 +363,10 @@ export interface SATPGatewayConfig extends ICactusPluginOptions {
    * @see {@link LogLevelDesc} for available logging levels
    */
   logLevel?: LogLevelDesc;
+
+  gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+
+  gatewayPolicyManager?: IGatewayPolicyManager;
 }
 
 /**
@@ -456,7 +465,9 @@ export interface SATPGatewayConfig extends ICactusPluginOptions {
  *
  * @since 0.0.3-beta
  */
-export class SATPGateway implements IPluginWebService, ICactusPlugin {
+export class SATPGateway
+  implements IPluginWebService, ICactusPlugin, IGatewayPolicyApplier
+{
   @IsDefined()
   @IsNotEmptyObject()
   @IsObject()
@@ -500,6 +511,7 @@ export class SATPGateway implements IPluginWebService, ICactusPlugin {
   private sessionVerificationJob: Job | null = null;
   private activeJobs: Set<schedule.Job> = new Set();
   private initialSpanContext: { span: Span; context: Context };
+
   /**
    * SATPGateway Constructor - Initialize fault-tolerant cross-chain gateway.
    *
@@ -726,6 +738,8 @@ export class SATPGateway implements IPluginWebService, ICactusPlugin {
           claimFormat: this.claimFormat,
           monitorService: this.monitorService,
           adapterManager: this.adapterManager,
+          gatewayComplianceVerifier: options.gatewayComplianceVerifier,
+          gatewayPolicyManager: options.gatewayPolicyManager,
         };
 
         if (!this.config.gid || !dispatcherOps.instanceId) {
@@ -1666,33 +1680,24 @@ export class SATPGateway implements IPluginWebService, ICactusPlugin {
   }
 
   public async applyPolicyConfig(
-    config: Partial<GatewayPolicyConfig>,
+    config: Partial<RuntimePolicy>,
   ): Promise<void> {
     const fnTag = `${this.className}#applyPolicyConfig()`;
-    this.logger.info(`${fnTag}: Applying: ${JSON.stringify(config)}`);
 
-    if (config["satp.version"] !== undefined) {
-      this.logger.info(`${fnTag}: SATP version → ${config["satp.version"]}`);
-      // this.satpVersion = config["satp.version"];
+    this.logger.info(
+      `${fnTag}: Applying: ${JSON.stringify(config, (_, v) =>
+        typeof v === "bigint" ? v.toString() : v,
+      )}`,
+    );
+
+    const policyManager = this.options
+      .gatewayPolicyManager as GovernanceManager;
+    if (policyManager) {
+      policyManager.applyPolicyConfig(config);
+    } else {
+      this.logger.warn(`${fnTag}: No gatewayPolicyManager configured`);
     }
-    if (config["satp.crash.version"] !== undefined) {
-      this.logger.info(
-        `${fnTag}: Crash version → ${config["satp.crash.version"]}`,
-      );
-      // this.crashManager?.setVersion(config["satp.crash.version"]);
-    }
-    if (config["satp.session.lockExpirationTime"] !== undefined) {
-      this.logger.info(
-        `${fnTag}: Lock expiry → ${config["satp.session.lockExpirationTime"]}`,
-      );
-      // this.sessionManager?.setLockExpiration(config["satp.session.lockExpirationTime"]);
-    }
-    if (config.signingAlgorithm !== undefined) {
-      this.logger.info(
-        `${fnTag}: Signing algorithm → ${config.signingAlgorithm}`,
-      );
-      // this.cryptoManager?.setSigningAlgorithm(config.signingAlgorithm);
-    }
+
     if (config.claimFormat !== undefined) {
       this.claimFormat = config.claimFormat;
       this.logger.info(

@@ -70,6 +70,7 @@ import { stringify as safeStableStringify } from "safe-stable-stringify";
 
 import {
   AssetMissing,
+  GatewayNotCompliantError,
   LedgerAssetError,
   MessageTypeError,
   MissingBridgeManagerError,
@@ -105,6 +106,7 @@ import { type BridgeManagerClientInterface } from "../../../cross-chain-mechanis
 import { NetworkId } from "../../../public-api";
 import { context, SpanStatusCode } from "@opentelemetry/api";
 import { buildAndCheckAsset, SessionSide } from "../../satp-utils";
+import { IGatewayComplianceVerifier } from "../../../governance/governance-types";
 /**
  * SATP Stage 0 Server Service implementation for transfer request processing and session management.
  *
@@ -151,6 +153,8 @@ export class Stage0ServerService extends SATPService {
   /** Asset claim format specification for proof verification */
   private claimFormat: ClaimFormat;
 
+  private gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+
   constructor(ops: ISATPServerServiceOptions) {
     // for now stage1serverservice does not have any different options than the SATPService class
     const commonOptions: ISATPServiceOptions = {
@@ -171,6 +175,7 @@ export class Stage0ServerService extends SATPService {
 
     this.claimFormat = ops.claimFormat || ClaimFormat.DEFAULT;
     this.bridgeManager = ops.bridgeManager;
+    this.gatewayComplianceVerifier = ops.gatewayComplianceVerifier;
   }
   /**
    * Validates an incoming NEW_SESSION_REQUEST and initializes server session data.
@@ -197,7 +202,7 @@ export class Stage0ServerService extends SATPService {
     const stepTag = `checkNewSessionRequest()`;
     const fnTag = `${this.getServiceIdentifier()}#${stepTag}`;
     const { span, context: ctx } = this.monitorService.startSpan(fnTag);
-    return context.with(ctx, () => {
+    return context.with(ctx, async () => {
       try {
         if (request == undefined) {
           throw new Error(`${fnTag}, Request is undefined`);
@@ -206,7 +211,19 @@ export class Stage0ServerService extends SATPService {
         if (request.clientSignature == "") {
           throw new SignatureMissingError(fnTag);
         }
-
+        if (this.gatewayComplianceVerifier) {
+          this.Log.debug(`${fnTag} Verifying compliance `);
+          const isCompliant =
+            await this.gatewayComplianceVerifier.isGatewayCompliant(
+              clientPubKey,
+            );
+          if (!isCompliant) {
+            this.Log.debug(
+              `${fnTag} client gateway is not compliant with governance`,
+            );
+            throw new GatewayNotCompliantError(fnTag, clientPubKey);
+          }
+        }
         if (request.sessionId == "") {
           throw new SessionIdError(fnTag);
         }

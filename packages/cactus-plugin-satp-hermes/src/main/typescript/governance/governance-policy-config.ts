@@ -1,69 +1,97 @@
-export type SigningAlgorithm = "SECP256K1" | "ED25519";
+import { SATP_VERSION, SATP_CRASH_VERSION } from "../core/constants";
+import Web3 from "web3";
+import {
+  ClaimFormat,
+  SignatureAlgorithm,
+} from "../generated/proto/cacti/satp/v02/common/message_pb";
 
-export interface GatewayPolicyConfig {
-  "satp.version": string;
-  "satp.crash.version": string;
-  "satp.session.lockExpirationTime": number;
-  signingAlgorithm: SigningAlgorithm;
-  enableCrashRecovery: boolean;
+export interface RuntimePolicy {
+  satpVersion: string;
+  crashVersion: string;
+  lockExpirationTime: bigint;
+  signatureAlgorithm: SignatureAlgorithm;
   claimFormat: ClaimFormat;
 }
+
+export const DEFAULT_RUNTIME_POLICY: RuntimePolicy = {
+  satpVersion: SATP_VERSION,
+  crashVersion: SATP_CRASH_VERSION,
+  lockExpirationTime: BigInt(1000 * 60 * 5),
+  signatureAlgorithm: SignatureAlgorithm.ECDSA,
+  claimFormat: ClaimFormat.DEFAULT,
+};
 
 export const EXPECTED_POLICY_KEYS = [
   "satp.version",
   "satp.crash.version",
   "satp.session.lockExpirationTime",
   "signingAlgorithm",
-  "enableCrashRecovery",
   "claimFormat",
 ] as const;
-
 export type PolicyKey = (typeof EXPECTED_POLICY_KEYS)[number];
 
-import Web3 from "web3";
-import { ClaimFormat } from "../public-api";
+const POLICY_KEY_TO_FIELD: Record<PolicyKey, keyof RuntimePolicy> = {
+  "satp.version": "satpVersion",
+  "satp.crash.version": "crashVersion",
+  "satp.session.lockExpirationTime": "lockExpirationTime",
+  signingAlgorithm: "signatureAlgorithm",
+  claimFormat: "claimFormat",
+};
 
-// Pre‑compute hashes of the known string constants
 const V02_HASH = BigInt(Web3.utils.keccak256("v02"));
-const SECP256K1_HASH = BigInt(Web3.utils.keccak256("SECP256K1"));
-const ED25519_HASH = BigInt(Web3.utils.keccak256("ED25519"));
+const ECDSA = BigInt(Web3.utils.keccak256("ECDSA"));
+const EDDSA = BigInt(Web3.utils.keccak256("EDDSA"));
+const RSA_HASH = BigInt(Web3.utils.keccak256("RSA"));
+const UNSPECIFIED_HASH = BigInt(Web3.utils.keccak256("UNSPECIFIED"));
 
-export function parsePolicyValue(
+export function parsePolicyEntry(
   key: PolicyKey,
   rawValue: bigint,
-): GatewayPolicyConfig[PolicyKey] {
-  switch (key) {
-    case "enableCrashRecovery":
-      return rawValue === 1n;
+): Partial<RuntimePolicy> {
+  const field = POLICY_KEY_TO_FIELD[key];
+  let value: RuntimePolicy[keyof RuntimePolicy];
 
+  switch (key) {
     case "satp.session.lockExpirationTime":
-      return Number(rawValue);
+      value = BigInt(rawValue); // stays bigint
+      break;
 
     case "claimFormat": {
       const num = Number(rawValue);
       if (!(num in ClaimFormat)) {
         throw new Error(`Invalid claimFormat value: ${rawValue}`);
       }
-      return num as ClaimFormat;
+      value = num as ClaimFormat;
+      break;
     }
 
     case "satp.version":
     case "satp.crash.version":
       if (rawValue === V02_HASH) {
-        return "v02";
+        value = "v02";
+        break;
       }
       throw new Error(`Unknown version hash: ${rawValue}`);
 
     case "signingAlgorithm":
-      if (rawValue === SECP256K1_HASH) {
-        return "SECP256K1";
+      if (rawValue === UNSPECIFIED_HASH) {
+        value = SignatureAlgorithm.UNSPECIFIED;
+        break;
       }
-      if (rawValue === ED25519_HASH) {
-        return "ED25519";
+      if (rawValue === ECDSA) {
+        value = SignatureAlgorithm.ECDSA;
+        break;
+      }
+      if (rawValue === EDDSA) {
+        value = SignatureAlgorithm.EDDSA;
+        break;
+      }
+      if (rawValue === RSA_HASH) {
+        value = SignatureAlgorithm.RSA;
+        break;
       }
       throw new Error(`Unknown signingAlgorithm hash: ${rawValue}`);
-
-    default:
-      throw new Error(`Unhandled policy key: ${key}`);
   }
+
+  return { [field]: value } as Partial<RuntimePolicy>;
 }

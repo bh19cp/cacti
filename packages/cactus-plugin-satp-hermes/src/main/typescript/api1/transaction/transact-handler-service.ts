@@ -34,13 +34,19 @@ export async function executeTransact(
   const serverGatewayPubkey: string = "";
   const receiverGatewayOwnerId: string = "";
 
+  const policy = manager.getRuntimePolicy();
+
+  logger.info(
+    `${fnTag}, runtime policy values: satpVersion=${policy.satpVersion}, signatureAlgorithm=${policy.signatureAlgorithm}, lockExpirationTime=${policy.lockExpirationTime}ms`,
+  );
+
   //Default, make it configurable by injecting sign function
-  const signatureAlgorithm: SignatureAlgorithm = SignatureAlgorithm.ECDSA;
+  const signatureAlgorithm: SignatureAlgorithm = policy.signatureAlgorithm;
 
   //Default, TODO
   const lockType: LockType = LockType.DESTROYBURN;
   //In milliseconds (5min)
-  const lockExpirationTime: bigint = BigInt(1000 * 60 * 5);
+  const lockExpirationTime: bigint = policy.lockExpirationTime;
 
   const credentialProfile: CredentialProfile = CredentialProfile.UNSPECIFIED;
   const loggingProfile: string = "MOCK_LOGGING_PROFILE";
@@ -51,7 +57,7 @@ export async function executeTransact(
   let session = manager.getOrCreateSession(undefined, req.contextID);
   session = populateClientSessionData(
     session,
-    SATP_VERSION,
+    policy.satpVersion,
     req.sourceAsset.contractAddress,
     req.receiverAsset.contractAddress,
     manager.pubKey,

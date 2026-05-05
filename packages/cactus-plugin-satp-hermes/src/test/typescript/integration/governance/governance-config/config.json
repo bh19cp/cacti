@@ -39,7 +39,7 @@
     { "key": "satp.version", "value": "v02" },
     { "key": "satp.crash.version", "value": "v02" },
     { "key": "satp.session.lockExpirationTime", "value": "34" },
-    { "key": "signingAlgorithm", "value": "SECP256K1" },
+    { "key": "signingAlgorithm", "value": "UNSPECIFIED" },
     { "key": "claimFormat", "value": "2" }
   ]
 }

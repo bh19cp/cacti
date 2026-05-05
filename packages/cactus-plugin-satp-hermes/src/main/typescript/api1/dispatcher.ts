@@ -125,6 +125,7 @@ import { DecideInboundWebhookEndpointV1 } from "./webhook/decide-endpoint";
 import { MonitorService } from "../services/monitoring/monitor";
 import { context, SpanStatusCode } from "@opentelemetry/api";
 import type { AdapterManager } from "../adapters/adapter-manager";
+import { IGatewayComplianceVerifier, IGatewayPolicyManager } from "../governance/governance-types";
 
 /**
  * Configuration options for BLODispatcher initialization.
@@ -178,6 +179,8 @@ export interface BLODispatcherOptions {
   monitorService: MonitorService;
   /** Optional adapter manager instance for SATP hooks */
   adapterManager?: AdapterManager;
+  gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+  gatewayPolicyManager?: IGatewayPolicyManager;
 }
 
 /**
@@ -249,7 +252,8 @@ export class BLODispatcher {
   private readonly monitorService: MonitorService;
   /** Adapter manager reference forwarded to SATP handlers */
   private readonly adapterManager?: AdapterManager;
-
+  private gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+  private gatewayPolicyManager?: IGatewayPolicyManager;
   /**
    * Initialize the BLO Dispatcher with required dependencies.
    *
@@ -302,6 +306,8 @@ export class BLODispatcher {
     this.localRepository = options.localRepository;
     this.remoteRepository = options.remoteRepository;
     this.ccManager = options.ccManager;
+    this.gatewayComplianceVerifier = options.gatewayComplianceVerifier;
+    this.gatewayPolicyManager = options.gatewayPolicyManager;
 
     context.with(ctx, () => {
       try {
@@ -317,6 +323,8 @@ export class BLODispatcher {
           claimFormat: options.claimFormat,
           monitorService: this.monitorService,
           adapterManager: this.adapterManager,
+          gatewayComplianceVerifier: this.gatewayComplianceVerifier,
+          gatewayPolicyManager: this.gatewayPolicyManager,
         };
 
         this.manager = new SATPManager(SATPManagerOpts);
