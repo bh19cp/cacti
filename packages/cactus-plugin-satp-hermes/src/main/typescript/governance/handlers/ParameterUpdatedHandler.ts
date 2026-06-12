@@ -8,6 +8,7 @@ import {
 } from "../governance-policy-config";
 import { SATPGateway } from "../../plugin-satp-hermes-gateway";
 
+import { GovernancePerfRecorder } from "../../../../test/typescript/integration/governance/utils/governancePerfRecorder";
 export class ParameterUpdatedHandler implements IGovernanceEventHandler {
   public static readonly CLASS_NAME = "ParameterUpdatedHandler";
 
@@ -27,6 +28,8 @@ export class ParameterUpdatedHandler implements IGovernanceEventHandler {
 
   async handle(event: GovernanceEvent): Promise<void> {
     const fnTag = `${ParameterUpdatedHandler.CLASS_NAME}#handle()`;
+    const eventReceivedNs = Date.now();
+
     this.log.debug(
       `${fnTag}: Received event:\n${JSON.stringify(event, null, 2)}`,
     );
@@ -53,14 +56,26 @@ export class ParameterUpdatedHandler implements IGovernanceEventHandler {
       );
       return;
     }
-    this.log.info(
-      `${fnTag}: Applying policy update — key=${key} parsed=${JSON.stringify(
-        parsedPolicy,
-        (_, v) => (typeof v === "bigint" ? v.toString() : v),
-      )}`,
-    );
+
+    const applyStartNs = Date.now();
+
     await this.gateway.applyPolicyConfig(parsedPolicy);
 
+    const applyEndNs = Date.now();
+
     this.log.info(`${fnTag}: Policy key '${key}' updated successfully`);
+
+    const recorder = GovernancePerfRecorder.get();
+    if (recorder) {
+      recorder.record({
+        run: recorder.nextRun(),
+        gatewayId: this.gateway.Identity.id,
+        key,
+        newValue,
+        eventReceivedNs,
+        applyStartNs,
+        applyEndNs,
+      });
+    }
   }
 }

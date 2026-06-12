@@ -13,6 +13,11 @@ export interface RuntimePolicy {
   claimFormat: ClaimFormat;
 }
 
+/**
+ * This is the default policy values that the governance
+ * manager falls back to, if a parameter is removed
+ * on-chain
+ */
 export const DEFAULT_RUNTIME_POLICY: RuntimePolicy = {
   satpVersion: SATP_VERSION,
   crashVersion: SATP_CRASH_VERSION,
@@ -23,16 +28,14 @@ export const DEFAULT_RUNTIME_POLICY: RuntimePolicy = {
 
 export const EXPECTED_POLICY_KEYS = [
   "satp.version",
-  "satp.crash.version",
   "satp.session.lockExpirationTime",
   "signingAlgorithm",
   "claimFormat",
 ] as const;
 export type PolicyKey = (typeof EXPECTED_POLICY_KEYS)[number];
 
-const POLICY_KEY_TO_FIELD: Record<PolicyKey, keyof RuntimePolicy> = {
+export const POLICY_KEY_TO_FIELD: Record<PolicyKey, keyof RuntimePolicy> = {
   "satp.version": "satpVersion",
-  "satp.crash.version": "crashVersion",
   "satp.session.lockExpirationTime": "lockExpirationTime",
   signingAlgorithm: "signatureAlgorithm",
   claimFormat: "claimFormat",
@@ -53,7 +56,7 @@ export function parsePolicyEntry(
 
   switch (key) {
     case "satp.session.lockExpirationTime":
-      value = BigInt(rawValue); // stays bigint
+      value = BigInt(rawValue);
       break;
 
     case "claimFormat": {
@@ -66,7 +69,6 @@ export function parsePolicyEntry(
     }
 
     case "satp.version":
-    case "satp.crash.version":
       if (rawValue === V02_HASH) {
         value = "v02";
         break;

@@ -1249,16 +1249,17 @@ export class SATPManager {
   public getRuntimePolicy(): RuntimePolicy {
     const fnTag = `${SATPManager.CLASS_NAME}#getRuntimePolicy()`;
 
+    this.logger.debug(`${fnTag}, Retrieving runtime policy...`);
     if (this.gatewayPolicyManager) {
       const policyFromManager = this.gatewayPolicyManager.getRuntimePolicy();
       this.logger.debug(
-        `${fnTag} using gatewayPolicyManager; lockExpirationTime=${policyFromManager.lockExpirationTime}`,
+        `${fnTag} using gatewayPolicyManager; lockExpirationTime=${policyFromManager.lockExpirationTime}, signatureAlgorithm=${policyFromManager.signatureAlgorithm}, claimFormat=${policyFromManager.claimFormat}`,
       );
       return policyFromManager;
     }
 
     this.logger.debug(
-      `${fnTag} gatewayPolicyManager is NOT set; falling back to DEFAULT_RUNTIME_POLICY (lockExpirationTime=${DEFAULT_RUNTIME_POLICY.lockExpirationTime})`,
+      `${fnTag} gatewayPolicyManager is NOT set; falling back to DEFAULT_RUNTIME_POLICY (lockExpirationTime=${DEFAULT_RUNTIME_POLICY.lockExpirationTime}, signatureAlgorithm=${DEFAULT_RUNTIME_POLICY.signatureAlgorithm}, claimFormat=${DEFAULT_RUNTIME_POLICY.claimFormat})`,
     );
     return { ...DEFAULT_RUNTIME_POLICY };
   }

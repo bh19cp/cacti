@@ -18,8 +18,8 @@ contract Governance is
     GovernorVotesQuorumFraction
 {
     enum VotingSystem {
-        TokenBased,          // 0: standard ERC20Votes weight (default)
-        Quadratic,           // 1: sqrt(tokenVotes) — reduces whale dominance
+        TokenBased,          // 0: ERC20Votes weight (default)
+        Quadratic,           // 1: sqrt of ERC20Votes weight
         WeightedReputation   // 2: tokenVotes boosted by GatewayRegistry reputation
     }
 

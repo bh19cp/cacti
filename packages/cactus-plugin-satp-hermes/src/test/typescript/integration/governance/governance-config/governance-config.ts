@@ -1,7 +1,6 @@
 export interface GovernanceConfig {
   name: string;
   tokenomics: {
-    treasury: boolean;
     name: string;
     symbol: string;
     supply: number;
@@ -10,7 +9,11 @@ export interface GovernanceConfig {
   organizations: Array<{
     address: string;
     name: string;
-    gateways: string[];
+    gateways: Array<{
+      publicKey: string;
+      name: string;
+    }>;
+    reputation?: number;
   }>;
   governance: {
     votingPeriod: number;

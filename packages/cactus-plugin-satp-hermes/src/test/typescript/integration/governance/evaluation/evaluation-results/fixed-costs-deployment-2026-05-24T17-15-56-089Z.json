@@ -1,0 +1,62 @@
+{
+  "runAt": "2026-05-24T17:15:56.089Z",
+  "description": "Average DAO deployment costs and per-operation variable costs (50 runs each)",
+  "environment": "Local Ethereum test network (Hardhat)",
+  "runsPerSample": 50,
+  "benchmarks": [
+    {
+      "label": "Profile 1 (Timelock false, token-based)",
+      "averageTimeMs": 24992.62,
+      "averageGasUsed": "10341649",
+      "runs": 50
+    },
+    {
+      "label": "Profile 2 (Timelock false, quadratic)",
+      "averageTimeMs": 25000.32,
+      "averageGasUsed": "10341661",
+      "runs": 50
+    },
+    {
+      "label": "Profile 3 (Timelock false, weighted-reputation)",
+      "averageTimeMs": 24987.76,
+      "averageGasUsed": "10341690",
+      "runs": 50
+    },
+    {
+      "label": "Profile 4 (Timelock true, token-based)",
+      "averageTimeMs": 30010.86,
+      "averageGasUsed": "12506447",
+      "runs": 50
+    },
+    {
+      "label": "Profile 5 (Timelock true, quadratic)",
+      "averageTimeMs": 29998.24,
+      "averageGasUsed": "12506457",
+      "runs": 50
+    },
+    {
+      "label": "Profile 6 (Timelock true, weighted-reputation)",
+      "averageTimeMs": 29998.78,
+      "averageGasUsed": "12506481",
+      "runs": 50
+    },
+    {
+      "label": "Add one protocol parameter",
+      "averageTimeMs": 4995.48,
+      "averageGasUsed": "166434",
+      "runs": 50
+    },
+    {
+      "label": "Register one organization",
+      "averageTimeMs": 10034,
+      "averageGasUsed": "312276",
+      "runs": 50
+    },
+    {
+      "label": "Register one gateway directly",
+      "averageTimeMs": 4986.6,
+      "averageGasUsed": "356801",
+      "runs": 50
+    }
+  ]
+}

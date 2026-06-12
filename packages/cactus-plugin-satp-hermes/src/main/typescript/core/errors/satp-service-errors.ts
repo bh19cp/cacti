@@ -1411,7 +1411,7 @@ export class PubKeyError extends SATPInternalError {
 }
 
 /**
- * Error thrown when a gateway is not compliant (revoked, suspended, or unknown).
+ * Error thrown when a gateway is not compliant (revoked, suspended or not registered in DAO).
  *
  * @description
  * Indicates that a gateway attempting to initiate or participate in a SATP transfer

@@ -1,0 +1,88 @@
+{
+  "runAt": "2026-05-17T16:58:00.053Z",
+  "description": "Gas and latency for each phase of the full governance voting lifecycle, per operation",
+  "environment": "Local Ethereum test network",
+  "gasPrice": "20 Gwei",
+  "benchmarks": [
+    {
+      "label": "add \"newParameter\"",
+      "operation": "addParameter",
+      "lifecyclePhase": "propose",
+      "proposalId": "103558948698868909300444485693926724627279932691047392590166375477190530227732",
+      "timeMs": 4174,
+      "gasUsed": "85037"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60",
+      "operation": "setParameter",
+      "lifecyclePhase": "propose",
+      "proposalId": "29645546540885520289360663338055786024304424759919314933450008624255855364182",
+      "timeMs": 5166,
+      "gasUsed": "85452"
+    },
+    {
+      "label": "remove \"claimFormat\"",
+      "operation": "removeParameter",
+      "lifecyclePhase": "propose",
+      "proposalId": "14287513450621114923759364753971626291526077991570614161624405932240951049215",
+      "timeMs": 5158,
+      "gasUsed": "84464"
+    },
+    {
+      "label": "register new org",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "propose",
+      "proposalId": "22360742324926918007099655498903718449190309779963990310717883273438280623292",
+      "timeMs": 5169,
+      "gasUsed": "93109"
+    },
+    {
+      "label": "register gateway 0x6459e9b8…",
+      "operation": "registerGateway",
+      "lifecyclePhase": "propose",
+      "proposalId": "93823749501069777511741015555922998441410611740698283932557494354792722970544",
+      "timeMs": 5153,
+      "gasUsed": "87007"
+    },
+    {
+      "label": "suspend gateway 0xC200ea3A…",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "propose",
+      "proposalId": "50894535560318963334169737286046512352488639750186456731040043453806542663022",
+      "timeMs": 5161,
+      "gasUsed": "87496"
+    },
+    {
+      "label": "remove gateway 0xC200ea3A…",
+      "operation": "removeGateway",
+      "lifecyclePhase": "propose",
+      "proposalId": "25709285019118859454866869782561766278019472174373618120496483974577210320531",
+      "timeMs": 5156,
+      "gasUsed": "86923"
+    },
+    {
+      "label": "suspend org 0x226425e1…",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "propose",
+      "proposalId": "40970543750230269447943097543696966969561634683443149541685837354222660903797",
+      "timeMs": 5182,
+      "gasUsed": "87520"
+    },
+    {
+      "label": "remove+reclaim org 0xF0a70B2C…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "propose",
+      "proposalId": "94313388946191210370343017995292201026921771733252937291616306272534497393913",
+      "timeMs": 5172,
+      "gasUsed": "93781"
+    },
+    {
+      "label": "remove+burn org 0x6F0Ead62…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "propose",
+      "proposalId": "30766928597996909054832215416213024320683446029012926180654523827632534011697",
+      "timeMs": 4148,
+      "gasUsed": "92884"
+    }
+  ]
+}

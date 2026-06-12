@@ -146,8 +146,6 @@ contract GovernanceWithTimelock is
         return tokenVotes;
     }
 
-    // required overrides
-
     function state(uint256 proposalId)
         public view override(Governor, GovernorTimelockControl) returns (ProposalState)
     { return super.state(proposalId); }

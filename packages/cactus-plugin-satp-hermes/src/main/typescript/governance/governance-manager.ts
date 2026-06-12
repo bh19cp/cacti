@@ -10,6 +10,7 @@ import {
   IGatewayPolicyManager,
   IGovernanceEventHandler,
   OnChainGateway,
+  OnChainOrganization,
   OnChainParameter,
   POLICY_REGISTRY_EVENT_SUBSCRIPTIONS,
 } from "./governance-types";
@@ -23,11 +24,11 @@ import {
 import { IEVMOracleEntry } from "../cross-chain-mechanisms/oracle/implementations/oracle-evm";
 import { IGatewayComplianceVerifier } from "./governance-types";
 import { GatewayStatusHandler } from "./handlers/GatewayStatusHandler";
-import { ethers } from "ethers";
 import { SATPGateway } from "../plugin-satp-hermes-gateway";
 import { ParameterUpdatedHandler } from "./handlers/ParameterUpdatedHandler";
 import { OracleAbstract } from "../cross-chain-mechanisms/oracle/oracle-abstract";
 import { OracleFactory } from "../cross-chain-mechanisms/oracle/oracle-factory";
+import { ParameterRemovedHandler } from "./handlers/ParameterRemovedHandler";
 
 export class GovernanceManager
   implements IGatewayComplianceVerifier, IGatewayPolicyManager
@@ -40,6 +41,7 @@ export class GovernanceManager
   private readonly handlers = new Map<string, IGovernanceEventHandler>();
   private readonly activeSubscriptions = new Map<string, () => void>();
   private gatewayStatusCache = new Map<string, number>();
+  private orgCache = new Map<string, OnChainOrganization>();
   private started = false;
   private readonly oracle: OracleAbstract;
   private runtimePolicy: RuntimePolicy = { ...DEFAULT_RUNTIME_POLICY };
@@ -62,29 +64,30 @@ export class GovernanceManager
 
   public async isGatewayCompliant(publicKey: string): Promise<boolean> {
     const fnTag = `${GovernanceManager.CLASS_NAME}#isGatewayCompliant()`;
+    this.log.info(
+      `${fnTag}: Checking compliance for gateway with public key ${publicKey}...`,
+    );
+
+    const publicKeyHex = publicKey.startsWith("0x")
+      ? publicKey
+      : "0x" + publicKey;
     try {
-      const gatewayAddress = this.publicKeyToAddress(publicKey);
-      if (!gatewayAddress) {
-        this.log.warn(`${fnTag}: Could not derive address from public key`);
-        return false;
-      }
-      const normalizedAddress = gatewayAddress.toLowerCase();
-      if (this.gatewayStatusCache.has(normalizedAddress)) {
-        const status = this.gatewayStatusCache.get(normalizedAddress)!;
+      if (this.gatewayStatusCache.has(publicKeyHex)) {
+        const status = this.gatewayStatusCache.get(publicKeyHex)!;
         return status === 0;
       }
-      this.log.debug(`${fnTag}: checking compliance for ${normalizedAddress}`);
+      this.log.debug(`${fnTag}: checking compliance for ${publicKey}`);
       const response = await this.oracle.readEntry({
         contractName: GovernanceManager.GATEWAY_REGISTRY_CONTRACT_NAME,
         contractAddress: this.options.gatewayRegistry.contractAddress,
         contractAbi: this.options.gatewayRegistry.contractAbi as any[],
         contractBytecode: "",
         methodName: "isGatewayActive",
-        params: [gatewayAddress],
+        params: [publicKeyHex],
       } as IEVMOracleEntry);
 
       const isActive = response.output as unknown as boolean;
-      this.gatewayStatusCache.set(normalizedAddress, isActive ? 0 : 1);
+      this.gatewayStatusCache.set(publicKeyHex, isActive ? 0 : 1);
       return isActive;
     } catch (err) {
       this.log.error(
@@ -95,23 +98,6 @@ export class GovernanceManager
     }
   }
 
-  private publicKeyToAddress(pubKeyHex: string): string {
-    try {
-      const prefixed = pubKeyHex.startsWith("0x")
-        ? pubKeyHex
-        : "0x" + pubKeyHex;
-      const computeAddress =
-        (ethers as any).computeAddress || (ethers as any).utils?.computeAddress;
-      if (!computeAddress) {
-        this.log.error("ethers.computeAddress is not available");
-        return "";
-      }
-      return computeAddress(prefixed);
-    } catch (err) {
-      this.log.debug(`publicKeyToAddress failed for ${pubKeyHex}: ${err}`);
-      return "";
-    }
-  }
   public registerHandler(handler: IGovernanceEventHandler): this {
     const fnTag = `${GovernanceManager.CLASS_NAME}#registerHandler()`;
     if (this.handlers.has(handler.id)) {
@@ -163,6 +149,7 @@ export class GovernanceManager
         this.registerHandler(new GatewayStatusHandler(this.gatewayStatusCache));
         this.log.info(`${fnTag}: Registered gateway status handler`);
         this.registerHandler(new ParameterUpdatedHandler(gateway));
+        this.registerHandler(new ParameterRemovedHandler(gateway));
         this.log.info(`${fnTag}: Registered Parameter Updated handler`);
         await this.attachContractSubscriptions(
           GovernanceManager.POLICY_REGISTRY_CONTRACT_NAME,
@@ -283,18 +270,29 @@ export class GovernanceManager
       const gateways = resp.output as unknown as OnChainGateway[];
 
       for (const gw of gateways) {
-        this.gatewayStatusCache.set(
-          gw.gatewayAddress.toLowerCase(),
-          Number(gw.status),
-        );
+        this.gatewayStatusCache.set(gw.gatewayPubKey, Number(gw.status));
       }
+      const orgResp = await this.oracle.readEntry({
+        contractName: GovernanceManager.GATEWAY_REGISTRY_CONTRACT_NAME,
+        contractAddress: this.options.gatewayRegistry.contractAddress,
+        contractAbi: this.options.gatewayRegistry.contractAbi as any[],
+        contractBytecode: "",
+        methodName: "getAllOrganizations",
+        params: [],
+      } as IEVMOracleEntry);
 
+      const orgs = orgResp.output as unknown as OnChainOrganization[];
+
+      for (const org of orgs) {
+        const orgWallet = org.wallet.toLowerCase();
+        this.orgCache.set(orgWallet, org);
+      }
       this.log.info(
-        `${fnTag}: Bootstrapped ${gateways.length} gateway(s) into cache`,
+        `${fnTag}: Bootstrapped ${orgs.length} organisation(s) into cache`,
       );
     } catch (err: any) {
       this.log.error(
-        `${fnTag}: Failed to bootstrap gateway registry info`,
+        `${fnTag}: Failed to bootstrap gateway & organisation info`,
         err,
       );
     }
@@ -347,7 +345,6 @@ export class GovernanceManager
     const expectedLength = eventSub.paramNames?.length ?? 0;
     let alignedRaw = raw;
 
-    // Connector always adds length as leading value
     if (raw.length === expectedLength + 1 && !isNaN(Number(raw[0]))) {
       alignedRaw = raw.slice(1);
       this.log.warn(
@@ -370,10 +367,6 @@ export class GovernanceManager
   }
   private async dispatch(event: GovernanceEvent): Promise<void> {
     const fnTag = `${GovernanceManager.CLASS_NAME}#dispatch()`;
-
-    this.log.debug(
-      `${fnTag}: Received event:\n${JSON.stringify(event, null, 2)}`,
-    );
     const eligible = [...this.handlers.values()].filter(
       (h) =>
         (h.interestedEvents.includes("*") ||
@@ -383,14 +376,9 @@ export class GovernanceManager
 
     if (eligible.length === 0) return;
 
-    this.log.debug(
-      `${fnTag}: '${event.eventSignature}' → ${eligible.length} handler(s)`,
-    );
-
     const results = await Promise.allSettled(
       eligible.map((h) => h.handle(event)),
     );
-
     results.forEach((result, i) => {
       if (result.status === "rejected") {
         this.log.error(
@@ -399,21 +387,18 @@ export class GovernanceManager
       }
     });
   }
-  /**
-   * Returns the cached status of a gateway.
-   * @param gatewayAddress - The Ethereum address of the gateway (0x…).
-   * @returns The status value (0 = active, 1 = inactive) or `undefined` if the address is not in the cache.
-   */
-  public getCachedGatewayStatus(gatewayAddress: string): number | undefined {
-    return this.gatewayStatusCache.get(gatewayAddress.toLowerCase());
+
+  public getCachedGatewayStatus(publicKey: string): number | undefined {
+    const publicKeyHex = publicKey.startsWith("0x")
+      ? publicKey
+      : "0x" + publicKey;
+    return this.gatewayStatusCache.get(publicKeyHex);
   }
 
-  /**
-   * Checks whether a gateway address is present in the local status cache.
-   * @param gatewayAddress - The Ethereum address of the gateway (0x…).
-   * @returns `true` if the address exists in the cache, `false` otherwise.
-   */
-  public isGatewayCached(gatewayAddress: string): boolean {
-    return this.gatewayStatusCache.has(gatewayAddress.toLowerCase());
+  public isGatewayCached(gatewayPubKey: string): boolean {
+    const publicKeyHex = gatewayPubKey.startsWith("0x")
+      ? gatewayPubKey
+      : "0x" + gatewayPubKey;
+    return this.gatewayStatusCache.has(publicKeyHex);
   }
 }

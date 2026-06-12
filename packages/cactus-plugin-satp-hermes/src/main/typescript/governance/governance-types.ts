@@ -110,12 +110,22 @@ export interface OnChainParameter {
 
 export interface OnChainGateway {
   name: string;
-  gatewayAddress: string;
+  gatewayPubKey: string;
   orgWallet: string;
   status: number; // 0 = Active, 1 = Suspended, 2 = Revoked
   registeredAt: number;
   updatedAt: number;
   exists: boolean;
+}
+
+export interface OnChainOrganization {
+  name: string;
+  wallet: string;
+  status: number; // 0 = Active, 1 = Suspended, 2 = Probation 3 = inactive
+  registeredAt: string;
+  updatedAt: string;
+  exists: boolean;
+  reputation: string;
 }
 
 export interface IGatewayComplianceVerifier {
@@ -141,4 +151,4 @@ export enum GatewayStatus {
   Active,
   Suspended,
   Revoked,
-} // 0, 1, 2
+}

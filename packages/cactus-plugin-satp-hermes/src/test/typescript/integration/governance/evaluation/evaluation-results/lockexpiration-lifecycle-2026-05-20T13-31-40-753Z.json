@@ -1,0 +1,7 @@
+{
+  "runAt": "2026-05-20T13:31:40.753Z",
+  "description": "Full governance lifecycle benchmark for lockExpirationTime update with 3 gateways",
+  "environment": "Local Ethereum + Besu test networks",
+  "gasPrice": "20 Gwei",
+  "benchmarks": []
+}

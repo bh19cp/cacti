@@ -1,0 +1,7 @@
+{
+  "runAt": "2026-05-17T17:04:32.426Z",
+  "description": "Gas and latency for each phase of the full governance voting lifecycle, per operation",
+  "environment": "Local Ethereum test network",
+  "gasPrice": "20 Gwei",
+  "benchmarks": []
+}

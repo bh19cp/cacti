@@ -1,0 +1,256 @@
+{
+  "testLabel": "Profile 3 (Timelock false, weighted-reputation)",
+  "totalRuns": 50,
+  "runs": [
+    {
+      "runIndex": 0,
+      "timeMs": 25080,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 1,
+      "timeMs": 24445,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 2,
+      "timeMs": 25222,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 3,
+      "timeMs": 24820,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 4,
+      "timeMs": 24922,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 5,
+      "timeMs": 25809,
+      "gasUsed": "10341669"
+    },
+    {
+      "runIndex": 6,
+      "timeMs": 24794,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 7,
+      "timeMs": 24821,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 8,
+      "timeMs": 24803,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 9,
+      "timeMs": 25116,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 10,
+      "timeMs": 24786,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 11,
+      "timeMs": 24827,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 12,
+      "timeMs": 25288,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 13,
+      "timeMs": 24843,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 14,
+      "timeMs": 25494,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 15,
+      "timeMs": 24837,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 16,
+      "timeMs": 24856,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 17,
+      "timeMs": 24801,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 18,
+      "timeMs": 24791,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 19,
+      "timeMs": 25834,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 20,
+      "timeMs": 24795,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 21,
+      "timeMs": 24807,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 22,
+      "timeMs": 24803,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 23,
+      "timeMs": 24957,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 24,
+      "timeMs": 24844,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 25,
+      "timeMs": 24974,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 26,
+      "timeMs": 25843,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 27,
+      "timeMs": 25040,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 28,
+      "timeMs": 24862,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 29,
+      "timeMs": 24822,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 30,
+      "timeMs": 24821,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 31,
+      "timeMs": 24829,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 32,
+      "timeMs": 24833,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 33,
+      "timeMs": 25805,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 34,
+      "timeMs": 24819,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 35,
+      "timeMs": 24832,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 36,
+      "timeMs": 24797,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 37,
+      "timeMs": 24810,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 38,
+      "timeMs": 24831,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 39,
+      "timeMs": 25811,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 40,
+      "timeMs": 24819,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 41,
+      "timeMs": 24824,
+      "gasUsed": "10341681"
+    },
+    {
+      "runIndex": 42,
+      "timeMs": 24799,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 43,
+      "timeMs": 24813,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 44,
+      "timeMs": 25827,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 45,
+      "timeMs": 24916,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 46,
+      "timeMs": 24828,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 47,
+      "timeMs": 24824,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 48,
+      "timeMs": 24808,
+      "gasUsed": "10341693"
+    },
+    {
+      "runIndex": 49,
+      "timeMs": 24806,
+      "gasUsed": "10341693"
+    }
+  ]
+}
