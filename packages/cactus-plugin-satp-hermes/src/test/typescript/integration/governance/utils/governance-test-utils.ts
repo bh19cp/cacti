@@ -17,7 +17,13 @@ import GatewayRegistryContract from "../../../../solidity/generated/GatewayRegis
 import PolicyRegistryContract from "../../../../solidity/generated/PolicyRegistry.sol/PolicyRegistry.json";
 import GovernanceWithTimelockContract from "../../../../solidity/generated/GovernanceWithTImelock.sol/GovernanceWithTimelock.json";
 import GovernanceContract from "../../../../solidity/generated/Governance.sol/Governance.json";
-import { expect } from "@jest/globals";
+const expect = (actual: unknown) => ({
+  toBe: (expected: unknown) => {
+    if (actual !== expected) {
+      throw new Error(`Expected ${String(expected)}, got ${String(actual)}`);
+    }
+  },
+});
 
 export const TOKEN_CONTRACT_NAME = "TokenContract";
 export const TIMELOCK_CONTRACT_NAME = "TimelockContract";
@@ -40,15 +46,10 @@ export interface ProposalAction {
   value?: number;
 }
 
-/** Result returned by both propose helpers. */
 export interface ProposeResult {
-  /** The on-chain proposal ID (uint256 as string). */
   proposalId: string;
-  /** Raw transaction receipt from the propose tx. */
   receipt: Web3TransactionReceipt;
-  /** Gas consumed by the propose transaction. */
   gasUsed: bigint;
-  /** Wall-clock time for the propose transaction in milliseconds. */
   timeMs: number;
 }
 
@@ -746,6 +747,30 @@ export async function deployDao(
         label: "Governor (no Timelock)",
         receipt: governorAddress.receipt,
       });
+
+    // no timelock: the governor itself must own the registries so executed proposals can write them
+    for (const [name, address, abi] of [
+      [
+        GATEWAY_REGISTRY_CONTRACT_NAME,
+        gatewayRegistryAddress.address,
+        GatewayRegistryContract.abi,
+      ],
+      [
+        POLICY_REGISTRY_CONTRACT_NAME,
+        policyRegistryAddress.address,
+        PolicyRegistryContract.abi,
+      ],
+      [TOKEN_CONTRACT_NAME, tokenAddress.address, TokenContract.abi],
+    ] as const)
+      await transferOwnershipToTimelock(
+        ethereumEnv,
+        deployerCredentials,
+        name,
+        address,
+        abi,
+        governorAddress.address,
+        labeledReceipts,
+      );
   }
 
   return {
@@ -887,7 +912,7 @@ export interface RunVotingParams {
   ethereumEnv: EthereumTestEnvironment;
   web3: InstanceType<typeof Web3>;
   governorAddress: string;
-  timelockAddress: string;
+  timelockAddress?: string;
   targetAddress: string;
   calldata: string;
   description: string;
@@ -905,7 +930,12 @@ export async function runSuccessfulVoting({
   description,
   organizationsCredentials,
   deployerCredentials,
-}: RunVotingParams): Promise<{ gasUsed: bigint; executeTimestamp: number }> {
+}: RunVotingParams): Promise<{
+  gasUsed: bigint;
+  executeTimestamp: number;
+  proposalId: string;
+  executeTxHash: string;
+}> {
   const extractGas = (result: any): bigint => {
     const receipt = result?.out?.transactionReceipt;
     return receipt?.gasUsed ? BigInt(receipt.gasUsed) : 0n;
@@ -964,11 +994,9 @@ export async function runSuccessfulVoting({
     governorAddress,
     GovernanceWithTimelockContract.abi,
   );
-  const minDelay = await getNumber(
-    "getMinDelay",
-    timelockAddress,
-    TimelockContract.abi,
-  );
+  const minDelay = timelockAddress
+    ? await getNumber("getMinDelay", timelockAddress, TimelockContract.abi)
+    : 0;
 
   const descHash = Web3.utils.keccak256(description);
 
@@ -1002,23 +1030,24 @@ export async function runSuccessfulVoting({
   }
 
   log.debug(`Votes cast, advancing blocks to end voting period...`);
+
   await advanceBlocks(web3, deployerCredentials, votingPeriod + 1);
+  if (timelockAddress) {
+    const queueResult = await invokeGovernor(
+      EthContractInvocationType.Send,
+      deployerCredentials,
+      "queue",
+      [[targetAddress], [0], [calldata], descHash],
+    );
+    if (!(queueResult as any).out?.transactionReceipt?.status) {
+      throw new Error("Queue failed");
+    }
+    totalGas += extractGas(queueResult);
 
-  const queueResult = await invokeGovernor(
-    EthContractInvocationType.Send,
-    deployerCredentials,
-    "queue",
-    [[targetAddress], [0], [calldata], descHash],
-  );
-  if (!(queueResult as any).out?.transactionReceipt?.status) {
-    throw new Error("Queue failed");
+    log.debug(`Waiting for minDelay (${minDelay}s)...`);
+    const waitMs = minDelay > 0 ? (minDelay + 1) * 1000 : 1000;
+    await new Promise((resolve) => setTimeout(resolve, waitMs));
   }
-  totalGas += extractGas(queueResult);
-
-  log.debug(`Waiting for minDelay (${minDelay}s)...`);
-  const waitMs = minDelay > 0 ? (minDelay + 1) * 1000 : 1000;
-  await new Promise((resolve) => setTimeout(resolve, waitMs));
-
   const executeTimestamp = Date.now();
   const executeResult = await invokeGovernor(
     EthContractInvocationType.Send,
@@ -1032,7 +1061,12 @@ export async function runSuccessfulVoting({
 
   log.debug("Run successful voting function total gas:", totalGas.toString());
 
-  return { gasUsed: totalGas, executeTimestamp: executeTimestamp };
+  return {
+    gasUsed: totalGas,
+    executeTimestamp: executeTimestamp,
+    proposalId: String(proposalId),
+    executeTxHash: String(executeReceipt.transactionHash),
+  };
 }
 export async function registerGatewayViaGovernance(params: {
   ethereumEnv: any;

@@ -123,7 +123,13 @@ export class BesuTestEnvironment {
   ): Promise<void> {
     this.ledger = new BesuTestLedger({
       emitContainerLogs: true,
-      envVars: ["BESU_NETWORK=dev"],
+      // BESU_LOGGING overrides the image default (WARN), e.g. BESU_LOGGING=INFO
+      envVars: [
+        "BESU_NETWORK=dev",
+        ...(process.env.BESU_LOGGING
+          ? [`BESU_LOGGING=${process.env.BESU_LOGGING}`]
+          : []),
+      ],
       containerImageVersion: "v2.2.0-rc.2",
       containerImageName: "ghcr.io/hyperledger-cacti/besu-all-in-one",
       networkName: this.dockerNetwork,

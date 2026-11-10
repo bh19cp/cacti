@@ -16,17 +16,19 @@ export class GatewayStatusHandler implements IGovernanceEventHandler {
   constructor(private readonly statusCache: Map<string, number>) {}
 
   async handle(event: GovernanceEvent): Promise<void> {
-    const gatewayPublicKey = (event.params.publicKey as string).toLowerCase();
+    const raw = event.params.publicKey as string | undefined;
+    if (!raw) return;
+    const key = (raw.startsWith("0x") ? raw : "0x" + raw).toLowerCase();
 
     switch (event.eventSignature) {
       case GatewayRegistryEventSignatures.GATEWAY_STATUS_CHANGED:
-        this.statusCache.set(gatewayPublicKey, Number(event.params.newStatus));
+        this.statusCache.set(key, Number(event.params.newStatus));
         break;
       case GatewayRegistryEventSignatures.GATEWAY_REGISTERED:
-        this.statusCache.set(gatewayPublicKey, GatewayStatus.Active);
+        this.statusCache.set(key, GatewayStatus.Active);
         break;
       case GatewayRegistryEventSignatures.GATEWAY_REMOVED:
-        this.statusCache.delete(gatewayPublicKey);
+        this.statusCache.delete(key);
         break;
     }
   }

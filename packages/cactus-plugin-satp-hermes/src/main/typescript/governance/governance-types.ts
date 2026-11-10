@@ -13,9 +13,9 @@ export const GatewayRegistryEventSignatures = {
   ORGANIZATION_STATUS_CHANGED:
     "OrganizationStatusChanged(address,uint8,uint8,string)",
   ORGANIZATION_REMOVED: "OrganizationRemoved(address,string)",
-  GATEWAY_REGISTERED: "GatewayRegistered(address,address,string,uint256)",
-  GATEWAY_STATUS_CHANGED: "GatewayStatusChanged(address,uint8,uint8,string)",
-  GATEWAY_REMOVED: "GatewayRemoved(address,string)",
+  GATEWAY_STATUS_CHANGED: "GatewayStatusChanged(bytes,uint8,uint8,string)",
+  GATEWAY_REGISTERED: "GatewayRegistered(bytes,address,uint256)",
+  GATEWAY_REMOVED: "GatewayRemoved(bytes,string)",
 } as const;
 
 export const POLICY_REGISTRY_EVENT_SUBSCRIPTIONS: GovernanceEventSubscription[] =
@@ -51,15 +51,15 @@ export const GATEWAY_REGISTRY_EVENT_SUBSCRIPTIONS: GovernanceEventSubscription[]
     },
     {
       eventSignature: GatewayRegistryEventSignatures.GATEWAY_REGISTERED,
-      paramNames: ["gatewayAddress", "orgWallet", "name", "timestamp"],
+      paramNames: ["publicKey", "orgWallet", "name", "timestamp"],
     },
     {
       eventSignature: GatewayRegistryEventSignatures.GATEWAY_STATUS_CHANGED,
-      paramNames: ["gatewayAddress", "oldStatus", "newStatus", "reason"],
+      paramNames: ["publicKey", "oldStatus", "newStatus", "reason"],
     },
     {
       eventSignature: GatewayRegistryEventSignatures.GATEWAY_REMOVED,
-      paramNames: ["gatewayAddress", "reason"],
+      paramNames: ["publicKey", "reason"],
     },
   ];
 
@@ -110,7 +110,7 @@ export interface OnChainParameter {
 
 export interface OnChainGateway {
   name: string;
-  gatewayPubKey: string;
+  publicKey: string;
   orgWallet: string;
   status: number; // 0 = Active, 1 = Suspended, 2 = Revoked
   registeredAt: number;

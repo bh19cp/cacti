@@ -62,15 +62,17 @@ export class GovernanceManager
     this.log.info(`${fnTag}: initialized`);
   }
 
+  private normKey(k: string): string {
+    return (k.startsWith("0x") ? k : "0x" + k).toLowerCase();
+  }
+
   public async isGatewayCompliant(publicKey: string): Promise<boolean> {
     const fnTag = `${GovernanceManager.CLASS_NAME}#isGatewayCompliant()`;
     this.log.info(
       `${fnTag}: Checking compliance for gateway with public key ${publicKey}...`,
     );
 
-    const publicKeyHex = publicKey.startsWith("0x")
-      ? publicKey
-      : "0x" + publicKey;
+    const publicKeyHex = this.normKey(publicKey);
     try {
       if (this.gatewayStatusCache.has(publicKeyHex)) {
         const status = this.gatewayStatusCache.get(publicKeyHex)!;
@@ -270,8 +272,12 @@ export class GovernanceManager
       const gateways = resp.output as unknown as OnChainGateway[];
 
       for (const gw of gateways) {
-        this.gatewayStatusCache.set(gw.gatewayPubKey, Number(gw.status));
+        this.gatewayStatusCache.set(
+          this.normKey(gw.publicKey),
+          Number(gw.status),
+        );
       }
+
       const orgResp = await this.oracle.readEntry({
         contractName: GovernanceManager.GATEWAY_REGISTRY_CONTRACT_NAME,
         contractAddress: this.options.gatewayRegistry.contractAddress,
@@ -400,5 +406,11 @@ export class GovernanceManager
       ? gatewayPubKey
       : "0x" + gatewayPubKey;
     return this.gatewayStatusCache.has(publicKeyHex);
+  }
+
+  public getCachedOrganization(
+    wallet: string,
+  ): OnChainOrganization | undefined {
+    return this.orgCache.get(wallet.toLowerCase());
   }
 }

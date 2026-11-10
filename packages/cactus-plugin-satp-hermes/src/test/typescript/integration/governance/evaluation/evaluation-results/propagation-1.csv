@@ -49,3 +49,9 @@ run,key,proposedValue,executeTimestampMs
 48,satp.session.lockExpirationTime,600048,1780253008245
 49,satp.session.lockExpirationTime,600049,1780253078988
 50,satp.session.lockExpirationTime,600050,1780253148784
+run,key,proposedValue,executeTimestampMs
+run,key,proposedValue,executeTimestampMs
+run,key,proposedValue,executeTimestampMs
+run,key,proposedValue,executeTimestampMs
+run,key,proposedValue,executeTimestampMs
+run,key,proposedValue,executeTimestampMs

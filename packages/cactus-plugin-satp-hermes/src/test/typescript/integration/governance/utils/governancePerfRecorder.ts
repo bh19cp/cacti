@@ -1,9 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 
-/**
- * This file only exist for propagation test
- */
 interface PerfRecord {
   run: number;
   gatewayId: string;

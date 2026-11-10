@@ -44,7 +44,7 @@ export function buildProfileConfig(profile: DaoProfile): GovernanceConfig {
       enabled: timelockEnabled,
       minDelay: timelockEnabled ? 1 : 0,
     },
-    organizations: [], // no orgs for fixed cost
-    protocolParameters: [], // no params for fixed cost
+    organizations: [],
+    protocolParameters: [],
   };
 }

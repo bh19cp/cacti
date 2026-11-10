@@ -1,0 +1,61 @@
+{
+  "name": "TestDao",
+  "tokenomics": {
+    "name": "TestDao",
+    "symbol": "RDAO",
+    "supply": 1000000,
+    "defaultMemberTokens": 1000
+  },
+  "organizations": [
+    {
+      "address": "${ORG_A_ADDRESS}",
+      "name": "Organization A",
+      "reputation": 1000,
+      "gateways": [
+        {
+          "publicKey": "${GATEWAY_A_PUBLIC_KEY}",
+          "name": "GatewayA1"
+        }
+      ]
+    },
+    {
+      "address": "${ORG_B_ADDRESS}",
+      "name": "Organization B",
+      "reputation": 1000,
+      "gateways": [
+        {
+          "publicKey": "${GATEWAY_B_PUBLIC_KEY}",
+          "name": "GatewayB1"
+        }
+      ]
+    },
+    {
+      "address": "${ORG_C_ADDRESS}",
+      "name": "Organization C",
+      "reputation": 1000,
+      "gateways": [
+        {
+          "publicKey": "${GATEWAY_C_PUBLIC_KEY}",
+          "name": "GatewayC1"
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "votingPeriod": 5,
+    "votingDelay": 1,
+    "proposalThreshold": 0,
+    "quorumFraction": 0,
+    "votingSystem": "token-based"
+  },
+  "timelock": {
+    "enabled": false,
+    "minDelay": 0
+  },
+  "protocolParameters": [
+    { "key": "satp.version", "value": "v02" },
+    { "key": "satp.session.lockExpirationTime", "value": "34" },
+    { "key": "signingAlgorithm", "value": "ECDSA" },
+    { "key": "claimFormat", "value": "2" }
+  ]
+}

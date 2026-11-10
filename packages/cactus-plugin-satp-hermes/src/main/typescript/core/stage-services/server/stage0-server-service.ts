@@ -223,6 +223,7 @@ export class Stage0ServerService extends SATPService {
             );
             throw new GatewayNotCompliantError(fnTag, clientPubKey);
           }
+          this.Log.debug(`${fnTag} compliance check passed`);
         }
         if (request.sessionId == "") {
           throw new SessionIdError(fnTag);
