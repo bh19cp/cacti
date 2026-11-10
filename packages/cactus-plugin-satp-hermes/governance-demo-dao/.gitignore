@@ -1,0 +1,9 @@
+# written by the demo CLI on start-ledgers (template + this run's org accounts and gateway keys)
+config.json
+
+# output of ichaingov-contract-generator, recreated whenever it is run here
+contracts/
+scripts/
+node_modules/
+package.json
+package-lock.json

@@ -106,6 +106,13 @@ import { SATPManager } from "./services/gateway/satp-manager";
 import { ExtensionConfig } from "./services/validation/config-validating-functions/validate-extensions";
 import { AdapterManager } from "./adapters/adapter-manager";
 import type { AdapterLayerConfiguration } from "./adapters/adapter-config";
+import { GovernanceManager } from "./governance/governance-manager";
+import {
+  IGatewayComplianceVerifier,
+  IGatewayPolicyApplier,
+  IGatewayPolicyManager,
+} from "./governance/governance-types";
+import { RuntimePolicy } from "./governance/governance-policy-config";
 
 /**
  * SATP Gateway Configuration Interface - Complete configuration for fault-tolerant gateway.
@@ -356,6 +363,10 @@ export interface SATPGatewayConfig extends ICactusPluginOptions {
    * @see {@link LogLevelDesc} for available logging levels
    */
   logLevel?: LogLevelDesc;
+
+  gatewayComplianceVerifier?: IGatewayComplianceVerifier;
+
+  gatewayPolicyManager?: IGatewayPolicyManager;
 }
 
 /**
@@ -454,7 +465,9 @@ export interface SATPGatewayConfig extends ICactusPluginOptions {
  *
  * @since 0.0.3-beta
  */
-export class SATPGateway implements IPluginWebService, ICactusPlugin {
+export class SATPGateway
+  implements IPluginWebService, ICactusPlugin, IGatewayPolicyApplier
+{
   @IsDefined()
   @IsNotEmptyObject()
   @IsObject()
@@ -725,6 +738,8 @@ export class SATPGateway implements IPluginWebService, ICactusPlugin {
           claimFormat: this.claimFormat,
           monitorService: this.monitorService,
           adapterManager: this.adapterManager,
+          gatewayComplianceVerifier: options.gatewayComplianceVerifier,
+          gatewayPolicyManager: options.gatewayPolicyManager,
         };
 
         if (!this.config.gid || !dispatcherOps.instanceId) {
@@ -1662,5 +1677,34 @@ export class SATPGateway implements IPluginWebService, ICactusPlugin {
       );
       throw new Error(`Failed to initialize monitoring service: ${err}`);
     }
+  }
+
+  public async applyPolicyConfig(
+    config: Partial<RuntimePolicy>,
+  ): Promise<void> {
+    const fnTag = `${this.className}#applyPolicyConfig()`;
+
+    this.logger.info(
+      `${fnTag}: Applying: ${JSON.stringify(config, (_, v) =>
+        typeof v === "bigint" ? v.toString() : v,
+      )}`,
+    );
+
+    const policyManager = this.options
+      .gatewayPolicyManager as GovernanceManager;
+    if (policyManager) {
+      policyManager.applyPolicyConfig(config);
+    } else {
+      this.logger.warn(`${fnTag}: No gatewayPolicyManager configured`);
+    }
+
+    if (config.claimFormat !== undefined) {
+      this.claimFormat = config.claimFormat;
+      this.logger.info(
+        `${fnTag}: Claim format → ${ClaimFormat[this.claimFormat]}`,
+      );
+    }
+
+    this.logger.info(`${fnTag}: Policy config applied successfully`);
   }
 }

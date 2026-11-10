@@ -1,0 +1,41 @@
+label,iteration,timeMs,error
+WITH_GM,1,16292,
+WITH_GM,2,16304,
+WITH_GM,3,15525,
+WITH_GM,4,15788,
+WITH_GM,5,16560,
+WITH_GM,6,15814,
+WITH_GM,7,16766,
+WITH_GM,8,16290,
+WITH_GM,9,16513,
+WITH_GM,10,15585,
+WITH_GM,11,16058,
+WITH_GM,12,15568,
+WITH_GM,13,16529,
+WITH_GM,14,15944,
+WITH_GM,15,16104,
+WITH_GM,16,16811,
+WITH_GM,17,16184,
+WITH_GM,18,15881,
+WITH_GM,19,15782,
+WITH_GM,20,15553,
+WITH_GM,21,16717,
+WITH_GM,22,16515,
+WITH_GM,23,,"transfer failed or timed out"
+WITH_GM,24,45717,
+WITH_GM,25,,"transfer failed or timed out"
+WITHOUT_GM,1,15870,
+WITHOUT_GM,2,16451,
+WITH_GM,26,,"transfer failed or timed out"
+WITHOUT_GM,3,136272,
+WITHOUT_GM,4,,"transfer failed or timed out"
+WITH_GM,27,151387,
+WITH_GM,28,,"transfer failed or timed out"
+WITHOUT_GM,5,52473,
+WITHOUT_GM,6,,"transfer failed or timed out"
+WITH_GM,29,,"transfer failed or timed out"
+WITH_GM,30,15942,
+WITHOUT_GM,7,,"transfer failed or timed out"
+WITH_GM,31,,"transfer failed or timed out"
+WITHOUT_GM,8,79575,
+WITHOUT_GM,9,,"transfer failed or timed out"

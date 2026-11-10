@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-05-21T16:24:17.700Z",
+  "benchmark": "governance-overhead-transfer",
+  "withGovernanceManager": {
+    "timeMs": 30622,
+    "gasUsed": "0"
+  },
+  "withoutGovernanceManager": {
+    "timeMs": 32411,
+    "gasUsed": "0"
+  },
+  "overhead": {
+    "absoluteMs": -1789,
+    "percentage": "-5.52"
+  },
+  "rawResults": [
+    {
+      "operation": "transfer",
+      "label": "with-governance-manager",
+      "timeMs": 30622,
+      "gasUsed": "0"
+    },
+    {
+      "operation": "transfer",
+      "label": "without-governance-manager",
+      "timeMs": 32411,
+      "gasUsed": "0"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "TestDao",
+  "tokenomics": {
+    "name": "TestDao",
+    "symbol": "RDAO",
+    "supply": 1000000,
+    "defaultMemberTokens": 1000
+  },
+  "organizations": [
+    {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "Organization A",
+      "gateways": [
+        {
+          "publicKey": "0x02e68acfc0253a10620dff079256c9efb7df3a7eb5b4dc8d03aefc3cbd5c20a1b0",
+          "name": "GatewayA1"
+        },
+        {
+          "publicKey": "0x03b17e6b5f7b87e2b0ef3e1c4d942f19a8d1f5e3c9b4872e3e9e3e3e3e3e3e3e",
+          "name": "GatewayA2"
+        }
+      ]
+    },
+    {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "Organization B",
+      "gateways": [
+        {
+          "publicKey": "0x027a1b2c3d4e5f60718293a4b5c6d7e8f90123456789abcdef0123456789abcdef",
+          "name": "GatewayB1"
+        }
+      ]
+    },
+    {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "Organization C",
+      "gateways": [
+        {
+          "publicKey": "0x03f123456789abcdef0123456789abcdef0123456789abcdef0123456789abcd",
+          "name": "GatewayC1"
+        }
+      ]
+    }
+  ],
+  "governance": {
+    "votingPeriod": 5,
+    "votingDelay": 1,
+    "proposalThreshold": 0,
+    "quorumFraction": 0,
+    "votingSystem": "token-based"
+  },
+  "timelock": {
+    "enabled": false,
+    "minDelay": 0
+  },
+  "protocolParameters": [
+    { "key": "satp.version", "value": "v02" },
+    { "key": "satp.crash.version", "value": "v02" },
+    { "key": "satp.session.lockExpirationTime", "value": "34" },
+    { "key": "signingAlgorithm", "value": "SECP256K1" },
+    { "key": "claimFormat", "value": "3" }
+  ]
+}

@@ -63,6 +63,7 @@ import type { GatewayPersistence } from "../../database/gateway-persistence";
 import { BridgeManagerClientInterface } from "../../cross-chain-mechanisms/bridge/interfaces/bridge-manager-client-interface";
 import { ClaimFormat } from "../../generated/proto/cacti/satp/v02/common/message_pb";
 import { MonitorService } from "../../services/monitoring/monitor";
+import { IGatewayComplianceVerifier } from "../../governance/governance-types";
 
 /**
  * Enumeration of SATP service implementation types.
@@ -150,6 +151,8 @@ export type ISATPServiceOptions = {
   claimFormat?: ClaimFormat;
   /** Service monitoring and metrics collection instance */
   monitorService: MonitorService;
+
+  gatewayComplianceVerifier?: IGatewayComplianceVerifier;
 };
 
 /**

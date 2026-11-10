@@ -8496,6 +8496,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@hyperledger/cactus-plugin-ichaingov@workspace:packages/cactus-plugin-ichaingov":
+  version: 0.0.0-use.local
+  resolution: "@hyperledger/cactus-plugin-ichaingov@workspace:packages/cactus-plugin-ichaingov"
+  languageName: unknown
+  linkType: soft
+
 "@hyperledger/cactus-plugin-keychain-aws-sm@workspace:packages/cactus-plugin-keychain-aws-sm":
   version: 0.0.0-use.local
   resolution: "@hyperledger/cactus-plugin-keychain-aws-sm@workspace:packages/cactus-plugin-keychain-aws-sm"
@@ -9254,6 +9260,7 @@ __metadata:
     typescript-optional: "npm:2.0.1"
     uuid: "npm:10.0.0"
     web3: "npm:4.4.0"
+    web3-eth-abi: "npm:^4.4.1"
     web3-utils: "npm:1.6.1"
   languageName: unknown
   linkType: soft

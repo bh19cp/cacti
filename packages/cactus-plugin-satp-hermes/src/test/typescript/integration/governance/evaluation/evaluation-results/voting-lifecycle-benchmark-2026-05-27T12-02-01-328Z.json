@@ -1,0 +1,2709 @@
+{
+  "runAt": "2026-05-27T12:02:01.330Z",
+  "runs": 50,
+  "description": "Gas and latency per phase of full governance lifecycle (50 runs each)",
+  "environment": "Local Ethereum test network",
+  "gasPrice": "20000000000",
+  "benchmarks": [
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 1,
+      "lifecyclePhase": "propose",
+      "proposalId": "85803860792245335340958052663343176467261584649643457821393343149003516442512",
+      "timeMs": 5059,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 1,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "85803860792245335340958052663343176467261584649643457821393343149003516442512",
+      "timeMs": 5087,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 1,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "85803860792245335340958052663343176467261584649643457821393343149003516442512",
+      "timeMs": 5076,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 1,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "85803860792245335340958052663343176467261584649643457821393343149003516442512",
+      "timeMs": 5079,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 1,
+      "lifecyclePhase": "queue",
+      "proposalId": "85803860792245335340958052663343176467261584649643457821393343149003516442512",
+      "timeMs": 5078,
+      "gasUsed": "149329"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 1,
+      "lifecyclePhase": "execute",
+      "proposalId": "85803860792245335340958052663343176467261584649643457821393343149003516442512",
+      "timeMs": 4074,
+      "gasUsed": "174980"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 2,
+      "lifecyclePhase": "propose",
+      "proposalId": "30846364835310542499715986466869006368439687289743606683067479464865776939275",
+      "timeMs": 5056,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 2,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "30846364835310542499715986466869006368439687289743606683067479464865776939275",
+      "timeMs": 5080,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 2,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "30846364835310542499715986466869006368439687289743606683067479464865776939275",
+      "timeMs": 5071,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 2,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "30846364835310542499715986466869006368439687289743606683067479464865776939275",
+      "timeMs": 5067,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 2,
+      "lifecyclePhase": "queue",
+      "proposalId": "30846364835310542499715986466869006368439687289743606683067479464865776939275",
+      "timeMs": 5065,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 2,
+      "lifecyclePhase": "execute",
+      "proposalId": "30846364835310542499715986466869006368439687289743606683067479464865776939275",
+      "timeMs": 5065,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 3,
+      "lifecyclePhase": "propose",
+      "proposalId": "90725743104636758883718231642872317855813702503019217258026027867711770604641",
+      "timeMs": 5062,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 3,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "90725743104636758883718231642872317855813702503019217258026027867711770604641",
+      "timeMs": 5060,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 3,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "90725743104636758883718231642872317855813702503019217258026027867711770604641",
+      "timeMs": 5068,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 3,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "90725743104636758883718231642872317855813702503019217258026027867711770604641",
+      "timeMs": 5061,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 3,
+      "lifecyclePhase": "queue",
+      "proposalId": "90725743104636758883718231642872317855813702503019217258026027867711770604641",
+      "timeMs": 5069,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 3,
+      "lifecyclePhase": "execute",
+      "proposalId": "90725743104636758883718231642872317855813702503019217258026027867711770604641",
+      "timeMs": 4069,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 4,
+      "lifecyclePhase": "propose",
+      "proposalId": "105020096650644601701921030435589213515944117522364041301994109096159398468745",
+      "timeMs": 5063,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 4,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "105020096650644601701921030435589213515944117522364041301994109096159398468745",
+      "timeMs": 5069,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 4,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "105020096650644601701921030435589213515944117522364041301994109096159398468745",
+      "timeMs": 5066,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 4,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "105020096650644601701921030435589213515944117522364041301994109096159398468745",
+      "timeMs": 5056,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 4,
+      "lifecyclePhase": "queue",
+      "proposalId": "105020096650644601701921030435589213515944117522364041301994109096159398468745",
+      "timeMs": 5072,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 4,
+      "lifecyclePhase": "execute",
+      "proposalId": "105020096650644601701921030435589213515944117522364041301994109096159398468745",
+      "timeMs": 5075,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 5,
+      "lifecyclePhase": "propose",
+      "proposalId": "67750596320256538172397068455699021452140434538590047305997358792480207320823",
+      "timeMs": 5066,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 5,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "67750596320256538172397068455699021452140434538590047305997358792480207320823",
+      "timeMs": 5066,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 5,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "67750596320256538172397068455699021452140434538590047305997358792480207320823",
+      "timeMs": 5067,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 5,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "67750596320256538172397068455699021452140434538590047305997358792480207320823",
+      "timeMs": 5055,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 5,
+      "lifecyclePhase": "queue",
+      "proposalId": "67750596320256538172397068455699021452140434538590047305997358792480207320823",
+      "timeMs": 5078,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 5,
+      "lifecyclePhase": "execute",
+      "proposalId": "67750596320256538172397068455699021452140434538590047305997358792480207320823",
+      "timeMs": 4076,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 6,
+      "lifecyclePhase": "propose",
+      "proposalId": "30771216181544218882995661724346590180131987716905320929745877239208543320815",
+      "timeMs": 5061,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 6,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "30771216181544218882995661724346590180131987716905320929745877239208543320815",
+      "timeMs": 4061,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 6,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "30771216181544218882995661724346590180131987716905320929745877239208543320815",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 6,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "30771216181544218882995661724346590180131987716905320929745877239208543320815",
+      "timeMs": 5051,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 6,
+      "lifecyclePhase": "queue",
+      "proposalId": "30771216181544218882995661724346590180131987716905320929745877239208543320815",
+      "timeMs": 5072,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 6,
+      "lifecyclePhase": "execute",
+      "proposalId": "30771216181544218882995661724346590180131987716905320929745877239208543320815",
+      "timeMs": 4077,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 7,
+      "lifecyclePhase": "propose",
+      "proposalId": "109971283446369928963303608198890824535991731948342344035463376193136712672217",
+      "timeMs": 5057,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 7,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "109971283446369928963303608198890824535991731948342344035463376193136712672217",
+      "timeMs": 5063,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 7,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "109971283446369928963303608198890824535991731948342344035463376193136712672217",
+      "timeMs": 5059,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 7,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "109971283446369928963303608198890824535991731948342344035463376193136712672217",
+      "timeMs": 5077,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 7,
+      "lifecyclePhase": "queue",
+      "proposalId": "109971283446369928963303608198890824535991731948342344035463376193136712672217",
+      "timeMs": 5069,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 7,
+      "lifecyclePhase": "execute",
+      "proposalId": "109971283446369928963303608198890824535991731948342344035463376193136712672217",
+      "timeMs": 4061,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 8,
+      "lifecyclePhase": "propose",
+      "proposalId": "78707947493939342930379354786127408636619808540948114032970981274474025162566",
+      "timeMs": 5069,
+      "gasUsed": "87368"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 8,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "78707947493939342930379354786127408636619808540948114032970981274474025162566",
+      "timeMs": 5060,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 8,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "78707947493939342930379354786127408636619808540948114032970981274474025162566",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 8,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "78707947493939342930379354786127408636619808540948114032970981274474025162566",
+      "timeMs": 4076,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 8,
+      "lifecyclePhase": "queue",
+      "proposalId": "78707947493939342930379354786127408636619808540948114032970981274474025162566",
+      "timeMs": 5069,
+      "gasUsed": "149329"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 8,
+      "lifecyclePhase": "execute",
+      "proposalId": "78707947493939342930379354786127408636619808540948114032970981274474025162566",
+      "timeMs": 5073,
+      "gasUsed": "174980"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 9,
+      "lifecyclePhase": "propose",
+      "proposalId": "108609396292139910836623032241830414514923939523925561075163882407200413316657",
+      "timeMs": 5060,
+      "gasUsed": "87356"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 9,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "108609396292139910836623032241830414514923939523925561075163882407200413316657",
+      "timeMs": 5070,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 9,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "108609396292139910836623032241830414514923939523925561075163882407200413316657",
+      "timeMs": 5059,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 9,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "108609396292139910836623032241830414514923939523925561075163882407200413316657",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 9,
+      "lifecyclePhase": "queue",
+      "proposalId": "108609396292139910836623032241830414514923939523925561075163882407200413316657",
+      "timeMs": 5070,
+      "gasUsed": "149329"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 9,
+      "lifecyclePhase": "execute",
+      "proposalId": "108609396292139910836623032241830414514923939523925561075163882407200413316657",
+      "timeMs": 4063,
+      "gasUsed": "168260"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 10,
+      "lifecyclePhase": "propose",
+      "proposalId": "14955102304283358713842663894400155449736348647650674286057941700228219791647",
+      "timeMs": 5083,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 10,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "14955102304283358713842663894400155449736348647650674286057941700228219791647",
+      "timeMs": 4094,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 10,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "14955102304283358713842663894400155449736348647650674286057941700228219791647",
+      "timeMs": 5059,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 10,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "14955102304283358713842663894400155449736348647650674286057941700228219791647",
+      "timeMs": 5068,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 10,
+      "lifecyclePhase": "queue",
+      "proposalId": "14955102304283358713842663894400155449736348647650674286057941700228219791647",
+      "timeMs": 5071,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 10,
+      "lifecyclePhase": "execute",
+      "proposalId": "14955102304283358713842663894400155449736348647650674286057941700228219791647",
+      "timeMs": 4074,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 11,
+      "lifecyclePhase": "propose",
+      "proposalId": "72302429835826115062306630997312823126752855393302752515828191523867225187088",
+      "timeMs": 5066,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 11,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "72302429835826115062306630997312823126752855393302752515828191523867225187088",
+      "timeMs": 5066,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 11,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "72302429835826115062306630997312823126752855393302752515828191523867225187088",
+      "timeMs": 5066,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 11,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "72302429835826115062306630997312823126752855393302752515828191523867225187088",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 11,
+      "lifecyclePhase": "queue",
+      "proposalId": "72302429835826115062306630997312823126752855393302752515828191523867225187088",
+      "timeMs": 4074,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 11,
+      "lifecyclePhase": "execute",
+      "proposalId": "72302429835826115062306630997312823126752855393302752515828191523867225187088",
+      "timeMs": 5077,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 12,
+      "lifecyclePhase": "propose",
+      "proposalId": "78423515109082808472438284510139056194464851001549380621428163110778046522453",
+      "timeMs": 5063,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 12,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "78423515109082808472438284510139056194464851001549380621428163110778046522453",
+      "timeMs": 5062,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 12,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "78423515109082808472438284510139056194464851001549380621428163110778046522453",
+      "timeMs": 5066,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 12,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "78423515109082808472438284510139056194464851001549380621428163110778046522453",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 12,
+      "lifecyclePhase": "queue",
+      "proposalId": "78423515109082808472438284510139056194464851001549380621428163110778046522453",
+      "timeMs": 5069,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 12,
+      "lifecyclePhase": "execute",
+      "proposalId": "78423515109082808472438284510139056194464851001549380621428163110778046522453",
+      "timeMs": 4070,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 13,
+      "lifecyclePhase": "propose",
+      "proposalId": "29856369409000689500414082272809352581746981517012548128354386623065026152648",
+      "timeMs": 5057,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 13,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "29856369409000689500414082272809352581746981517012548128354386623065026152648",
+      "timeMs": 5059,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 13,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "29856369409000689500414082272809352581746981517012548128354386623065026152648",
+      "timeMs": 5062,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 13,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "29856369409000689500414082272809352581746981517012548128354386623065026152648",
+      "timeMs": 5059,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 13,
+      "lifecyclePhase": "queue",
+      "proposalId": "29856369409000689500414082272809352581746981517012548128354386623065026152648",
+      "timeMs": 5070,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 13,
+      "lifecyclePhase": "execute",
+      "proposalId": "29856369409000689500414082272809352581746981517012548128354386623065026152648",
+      "timeMs": 4075,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 14,
+      "lifecyclePhase": "propose",
+      "proposalId": "73569968340797215174921312942933423935257793428528257193373950971855973077181",
+      "timeMs": 5066,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 14,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "73569968340797215174921312942933423935257793428528257193373950971855973077181",
+      "timeMs": 5064,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 14,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "73569968340797215174921312942933423935257793428528257193373950971855973077181",
+      "timeMs": 4061,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 14,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "73569968340797215174921312942933423935257793428528257193373950971855973077181",
+      "timeMs": 5066,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 14,
+      "lifecyclePhase": "queue",
+      "proposalId": "73569968340797215174921312942933423935257793428528257193373950971855973077181",
+      "timeMs": 5069,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 14,
+      "lifecyclePhase": "execute",
+      "proposalId": "73569968340797215174921312942933423935257793428528257193373950971855973077181",
+      "timeMs": 5075,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 15,
+      "lifecyclePhase": "propose",
+      "proposalId": "110770650571236236715429557683548118486501824010771750801203870003457867626811",
+      "timeMs": 5057,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 15,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "110770650571236236715429557683548118486501824010771750801203870003457867626811",
+      "timeMs": 5054,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 15,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "110770650571236236715429557683548118486501824010771750801203870003457867626811",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 15,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "110770650571236236715429557683548118486501824010771750801203870003457867626811",
+      "timeMs": 5092,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 15,
+      "lifecyclePhase": "queue",
+      "proposalId": "110770650571236236715429557683548118486501824010771750801203870003457867626811",
+      "timeMs": 5061,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 15,
+      "lifecyclePhase": "execute",
+      "proposalId": "110770650571236236715429557683548118486501824010771750801203870003457867626811",
+      "timeMs": 4077,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 16,
+      "lifecyclePhase": "propose",
+      "proposalId": "66910465977735382570962479771407533618156346148883969762314160140130184441291",
+      "timeMs": 5053,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 16,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "66910465977735382570962479771407533618156346148883969762314160140130184441291",
+      "timeMs": 5059,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 16,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "66910465977735382570962479771407533618156346148883969762314160140130184441291",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 16,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "66910465977735382570962479771407533618156346148883969762314160140130184441291",
+      "timeMs": 5057,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 16,
+      "lifecyclePhase": "queue",
+      "proposalId": "66910465977735382570962479771407533618156346148883969762314160140130184441291",
+      "timeMs": 5066,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 16,
+      "lifecyclePhase": "execute",
+      "proposalId": "66910465977735382570962479771407533618156346148883969762314160140130184441291",
+      "timeMs": 5078,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 17,
+      "lifecyclePhase": "propose",
+      "proposalId": "51766524121767015762069748085628187055298665702578968308163292429901913334305",
+      "timeMs": 5068,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 17,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "51766524121767015762069748085628187055298665702578968308163292429901913334305",
+      "timeMs": 5059,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 17,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "51766524121767015762069748085628187055298665702578968308163292429901913334305",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 17,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "51766524121767015762069748085628187055298665702578968308163292429901913334305",
+      "timeMs": 5060,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 17,
+      "lifecyclePhase": "queue",
+      "proposalId": "51766524121767015762069748085628187055298665702578968308163292429901913334305",
+      "timeMs": 5066,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 17,
+      "lifecyclePhase": "execute",
+      "proposalId": "51766524121767015762069748085628187055298665702578968308163292429901913334305",
+      "timeMs": 4061,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 18,
+      "lifecyclePhase": "propose",
+      "proposalId": "93086969527368706661439441069865783641671302258055599139418367230316832106382",
+      "timeMs": 5065,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 18,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "93086969527368706661439441069865783641671302258055599139418367230316832106382",
+      "timeMs": 5062,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 18,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "93086969527368706661439441069865783641671302258055599139418367230316832106382",
+      "timeMs": 5071,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 18,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "93086969527368706661439441069865783641671302258055599139418367230316832106382",
+      "timeMs": 4120,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 18,
+      "lifecyclePhase": "queue",
+      "proposalId": "93086969527368706661439441069865783641671302258055599139418367230316832106382",
+      "timeMs": 5082,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 18,
+      "lifecyclePhase": "execute",
+      "proposalId": "93086969527368706661439441069865783641671302258055599139418367230316832106382",
+      "timeMs": 5078,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 19,
+      "lifecyclePhase": "propose",
+      "proposalId": "47835401966134543428963467149714607772816672787637328697524714519464844859430",
+      "timeMs": 5075,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 19,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "47835401966134543428963467149714607772816672787637328697524714519464844859430",
+      "timeMs": 5066,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 19,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "47835401966134543428963467149714607772816672787637328697524714519464844859430",
+      "timeMs": 5055,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 19,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "47835401966134543428963467149714607772816672787637328697524714519464844859430",
+      "timeMs": 5070,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 19,
+      "lifecyclePhase": "queue",
+      "proposalId": "47835401966134543428963467149714607772816672787637328697524714519464844859430",
+      "timeMs": 5104,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 19,
+      "lifecyclePhase": "execute",
+      "proposalId": "47835401966134543428963467149714607772816672787637328697524714519464844859430",
+      "timeMs": 4063,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 20,
+      "lifecyclePhase": "propose",
+      "proposalId": "24260424940374808578513190299899645953347142259671645223422650619380762484672",
+      "timeMs": 5068,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 20,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "24260424940374808578513190299899645953347142259671645223422650619380762484672",
+      "timeMs": 4063,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 20,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "24260424940374808578513190299899645953347142259671645223422650619380762484672",
+      "timeMs": 5066,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 20,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "24260424940374808578513190299899645953347142259671645223422650619380762484672",
+      "timeMs": 5069,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 20,
+      "lifecyclePhase": "queue",
+      "proposalId": "24260424940374808578513190299899645953347142259671645223422650619380762484672",
+      "timeMs": 5062,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 20,
+      "lifecyclePhase": "execute",
+      "proposalId": "24260424940374808578513190299899645953347142259671645223422650619380762484672",
+      "timeMs": 4069,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 21,
+      "lifecyclePhase": "propose",
+      "proposalId": "50983758582328661645947086720174491569926330421142962877456196423096364151915",
+      "timeMs": 5063,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 21,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "50983758582328661645947086720174491569926330421142962877456196423096364151915",
+      "timeMs": 5056,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 21,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "50983758582328661645947086720174491569926330421142962877456196423096364151915",
+      "timeMs": 5068,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 21,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "50983758582328661645947086720174491569926330421142962877456196423096364151915",
+      "timeMs": 5070,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 21,
+      "lifecyclePhase": "queue",
+      "proposalId": "50983758582328661645947086720174491569926330421142962877456196423096364151915",
+      "timeMs": 4066,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 21,
+      "lifecyclePhase": "execute",
+      "proposalId": "50983758582328661645947086720174491569926330421142962877456196423096364151915",
+      "timeMs": 5076,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 22,
+      "lifecyclePhase": "propose",
+      "proposalId": "54347924652213024589702199897407721657047887814148465144519623519594982726948",
+      "timeMs": 5063,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 22,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "54347924652213024589702199897407721657047887814148465144519623519594982726948",
+      "timeMs": 4067,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 22,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "54347924652213024589702199897407721657047887814148465144519623519594982726948",
+      "timeMs": 5058,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 22,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "54347924652213024589702199897407721657047887814148465144519623519594982726948",
+      "timeMs": 5069,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 22,
+      "lifecyclePhase": "queue",
+      "proposalId": "54347924652213024589702199897407721657047887814148465144519623519594982726948",
+      "timeMs": 5073,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 22,
+      "lifecyclePhase": "execute",
+      "proposalId": "54347924652213024589702199897407721657047887814148465144519623519594982726948",
+      "timeMs": 4076,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 23,
+      "lifecyclePhase": "propose",
+      "proposalId": "52891076046727707853123474108761737255251526986921153362661432059043662580441",
+      "timeMs": 5096,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 23,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "52891076046727707853123474108761737255251526986921153362661432059043662580441",
+      "timeMs": 5063,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 23,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "52891076046727707853123474108761737255251526986921153362661432059043662580441",
+      "timeMs": 5061,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 23,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "52891076046727707853123474108761737255251526986921153362661432059043662580441",
+      "timeMs": 5071,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 23,
+      "lifecyclePhase": "queue",
+      "proposalId": "52891076046727707853123474108761737255251526986921153362661432059043662580441",
+      "timeMs": 4071,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 23,
+      "lifecyclePhase": "execute",
+      "proposalId": "52891076046727707853123474108761737255251526986921153362661432059043662580441",
+      "timeMs": 5075,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 24,
+      "lifecyclePhase": "propose",
+      "proposalId": "108930045121264188179536881787560908629885470350128201402037701620803384564939",
+      "timeMs": 5064,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 24,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "108930045121264188179536881787560908629885470350128201402037701620803384564939",
+      "timeMs": 4062,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 24,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "108930045121264188179536881787560908629885470350128201402037701620803384564939",
+      "timeMs": 5065,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 24,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "108930045121264188179536881787560908629885470350128201402037701620803384564939",
+      "timeMs": 5062,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 24,
+      "lifecyclePhase": "queue",
+      "proposalId": "108930045121264188179536881787560908629885470350128201402037701620803384564939",
+      "timeMs": 5059,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 24,
+      "lifecyclePhase": "execute",
+      "proposalId": "108930045121264188179536881787560908629885470350128201402037701620803384564939",
+      "timeMs": 4076,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 25,
+      "lifecyclePhase": "propose",
+      "proposalId": "74726219081138726604394259333121745302435369519675434756410240326449786873829",
+      "timeMs": 5064,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 25,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "74726219081138726604394259333121745302435369519675434756410240326449786873829",
+      "timeMs": 5058,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 25,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "74726219081138726604394259333121745302435369519675434756410240326449786873829",
+      "timeMs": 5060,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 25,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "74726219081138726604394259333121745302435369519675434756410240326449786873829",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 25,
+      "lifecyclePhase": "queue",
+      "proposalId": "74726219081138726604394259333121745302435369519675434756410240326449786873829",
+      "timeMs": 5065,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 25,
+      "lifecyclePhase": "execute",
+      "proposalId": "74726219081138726604394259333121745302435369519675434756410240326449786873829",
+      "timeMs": 4057,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 26,
+      "lifecyclePhase": "propose",
+      "proposalId": "113714829683175026489968312173161467545914132704313829958217963360742020513095",
+      "timeMs": 5065,
+      "gasUsed": "87380"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 26,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "113714829683175026489968312173161467545914132704313829958217963360742020513095",
+      "timeMs": 4061,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 26,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "113714829683175026489968312173161467545914132704313829958217963360742020513095",
+      "timeMs": 5061,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 26,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "113714829683175026489968312173161467545914132704313829958217963360742020513095",
+      "timeMs": 5062,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 26,
+      "lifecyclePhase": "queue",
+      "proposalId": "113714829683175026489968312173161467545914132704313829958217963360742020513095",
+      "timeMs": 5069,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 26,
+      "lifecyclePhase": "execute",
+      "proposalId": "113714829683175026489968312173161467545914132704313829958217963360742020513095",
+      "timeMs": 4086,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 27,
+      "lifecyclePhase": "propose",
+      "proposalId": "26061814852743274648660047535496110816521053529146263779700343560184857537862",
+      "timeMs": 5059,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 27,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "26061814852743274648660047535496110816521053529146263779700343560184857537862",
+      "timeMs": 5062,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 27,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "26061814852743274648660047535496110816521053529146263779700343560184857537862",
+      "timeMs": 5063,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 27,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "26061814852743274648660047535496110816521053529146263779700343560184857537862",
+      "timeMs": 5058,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 27,
+      "lifecyclePhase": "queue",
+      "proposalId": "26061814852743274648660047535496110816521053529146263779700343560184857537862",
+      "timeMs": 5083,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 27,
+      "lifecyclePhase": "execute",
+      "proposalId": "26061814852743274648660047535496110816521053529146263779700343560184857537862",
+      "timeMs": 4073,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 28,
+      "lifecyclePhase": "propose",
+      "proposalId": "89507425325618238692877456508433584674264917117023669891766501191244793629430",
+      "timeMs": 5066,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 28,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "89507425325618238692877456508433584674264917117023669891766501191244793629430",
+      "timeMs": 4061,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 28,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "89507425325618238692877456508433584674264917117023669891766501191244793629430",
+      "timeMs": 5077,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 28,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "89507425325618238692877456508433584674264917117023669891766501191244793629430",
+      "timeMs": 5064,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 28,
+      "lifecyclePhase": "queue",
+      "proposalId": "89507425325618238692877456508433584674264917117023669891766501191244793629430",
+      "timeMs": 5075,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 28,
+      "lifecyclePhase": "execute",
+      "proposalId": "89507425325618238692877456508433584674264917117023669891766501191244793629430",
+      "timeMs": 4083,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 29,
+      "lifecyclePhase": "propose",
+      "proposalId": "56933912003668778152062694986258610318677587365836627621579363004368736020569",
+      "timeMs": 5060,
+      "gasUsed": "87380"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 29,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "56933912003668778152062694986258610318677587365836627621579363004368736020569",
+      "timeMs": 5065,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 29,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "56933912003668778152062694986258610318677587365836627621579363004368736020569",
+      "timeMs": 5062,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 29,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "56933912003668778152062694986258610318677587365836627621579363004368736020569",
+      "timeMs": 5062,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 29,
+      "lifecyclePhase": "queue",
+      "proposalId": "56933912003668778152062694986258610318677587365836627621579363004368736020569",
+      "timeMs": 4077,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 29,
+      "lifecyclePhase": "execute",
+      "proposalId": "56933912003668778152062694986258610318677587365836627621579363004368736020569",
+      "timeMs": 5082,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 30,
+      "lifecyclePhase": "propose",
+      "proposalId": "40704842796239579388247572486676347868323353145511463164271761880430044346669",
+      "timeMs": 5071,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 30,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "40704842796239579388247572486676347868323353145511463164271761880430044346669",
+      "timeMs": 5069,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 30,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "40704842796239579388247572486676347868323353145511463164271761880430044346669",
+      "timeMs": 5065,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 30,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "40704842796239579388247572486676347868323353145511463164271761880430044346669",
+      "timeMs": 5066,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 30,
+      "lifecyclePhase": "queue",
+      "proposalId": "40704842796239579388247572486676347868323353145511463164271761880430044346669",
+      "timeMs": 5076,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 30,
+      "lifecyclePhase": "execute",
+      "proposalId": "40704842796239579388247572486676347868323353145511463164271761880430044346669",
+      "timeMs": 4077,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 31,
+      "lifecyclePhase": "propose",
+      "proposalId": "115753035257202185508648802942380679574565188083646355597460509542331325535847",
+      "timeMs": 5074,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 31,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "115753035257202185508648802942380679574565188083646355597460509542331325535847",
+      "timeMs": 5066,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 31,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "115753035257202185508648802942380679574565188083646355597460509542331325535847",
+      "timeMs": 5070,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 31,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "115753035257202185508648802942380679574565188083646355597460509542331325535847",
+      "timeMs": 5068,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 31,
+      "lifecyclePhase": "queue",
+      "proposalId": "115753035257202185508648802942380679574565188083646355597460509542331325535847",
+      "timeMs": 5082,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 31,
+      "lifecyclePhase": "execute",
+      "proposalId": "115753035257202185508648802942380679574565188083646355597460509542331325535847",
+      "timeMs": 5083,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 32,
+      "lifecyclePhase": "propose",
+      "proposalId": "7163767189085810702683290003201484622779485323253493101340896240996760391722",
+      "timeMs": 5071,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 32,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "7163767189085810702683290003201484622779485323253493101340896240996760391722",
+      "timeMs": 5063,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 32,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "7163767189085810702683290003201484622779485323253493101340896240996760391722",
+      "timeMs": 5058,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 32,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "7163767189085810702683290003201484622779485323253493101340896240996760391722",
+      "timeMs": 5059,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 32,
+      "lifecyclePhase": "queue",
+      "proposalId": "7163767189085810702683290003201484622779485323253493101340896240996760391722",
+      "timeMs": 5093,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 32,
+      "lifecyclePhase": "execute",
+      "proposalId": "7163767189085810702683290003201484622779485323253493101340896240996760391722",
+      "timeMs": 4084,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 33,
+      "lifecyclePhase": "propose",
+      "proposalId": "36024401473219704942199851526456342701662874047058616346320762698757225171705",
+      "timeMs": 5080,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 33,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "36024401473219704942199851526456342701662874047058616346320762698757225171705",
+      "timeMs": 4075,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 33,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "36024401473219704942199851526456342701662874047058616346320762698757225171705",
+      "timeMs": 5068,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 33,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "36024401473219704942199851526456342701662874047058616346320762698757225171705",
+      "timeMs": 5072,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 33,
+      "lifecyclePhase": "queue",
+      "proposalId": "36024401473219704942199851526456342701662874047058616346320762698757225171705",
+      "timeMs": 5074,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 33,
+      "lifecyclePhase": "execute",
+      "proposalId": "36024401473219704942199851526456342701662874047058616346320762698757225171705",
+      "timeMs": 4092,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 34,
+      "lifecyclePhase": "propose",
+      "proposalId": "56472057377506196728075770311595264823710350780773097526254311198426669374364",
+      "timeMs": 5078,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 34,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "56472057377506196728075770311595264823710350780773097526254311198426669374364",
+      "timeMs": 5067,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 34,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "56472057377506196728075770311595264823710350780773097526254311198426669374364",
+      "timeMs": 5080,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 34,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "56472057377506196728075770311595264823710350780773097526254311198426669374364",
+      "timeMs": 5071,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 34,
+      "lifecyclePhase": "queue",
+      "proposalId": "56472057377506196728075770311595264823710350780773097526254311198426669374364",
+      "timeMs": 5077,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 34,
+      "lifecyclePhase": "execute",
+      "proposalId": "56472057377506196728075770311595264823710350780773097526254311198426669374364",
+      "timeMs": 5083,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 35,
+      "lifecyclePhase": "propose",
+      "proposalId": "81993591844879678627795954817291604251508613662667151050605995352714287495847",
+      "timeMs": 5067,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 35,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "81993591844879678627795954817291604251508613662667151050605995352714287495847",
+      "timeMs": 5068,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 35,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "81993591844879678627795954817291604251508613662667151050605995352714287495847",
+      "timeMs": 5079,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 35,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "81993591844879678627795954817291604251508613662667151050605995352714287495847",
+      "timeMs": 5077,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 35,
+      "lifecyclePhase": "queue",
+      "proposalId": "81993591844879678627795954817291604251508613662667151050605995352714287495847",
+      "timeMs": 5071,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 35,
+      "lifecyclePhase": "execute",
+      "proposalId": "81993591844879678627795954817291604251508613662667151050605995352714287495847",
+      "timeMs": 4080,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 36,
+      "lifecyclePhase": "propose",
+      "proposalId": "31614484907984882943087834432158156896210437800558628079347837142074110834007",
+      "timeMs": 5071,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 36,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "31614484907984882943087834432158156896210437800558628079347837142074110834007",
+      "timeMs": 5066,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 36,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "31614484907984882943087834432158156896210437800558628079347837142074110834007",
+      "timeMs": 5062,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 36,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "31614484907984882943087834432158156896210437800558628079347837142074110834007",
+      "timeMs": 4076,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 36,
+      "lifecyclePhase": "queue",
+      "proposalId": "31614484907984882943087834432158156896210437800558628079347837142074110834007",
+      "timeMs": 5057,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 36,
+      "lifecyclePhase": "execute",
+      "proposalId": "31614484907984882943087834432158156896210437800558628079347837142074110834007",
+      "timeMs": 5089,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 37,
+      "lifecyclePhase": "propose",
+      "proposalId": "103957483446006261695026695340913160964392713940691220923524397653667460858200",
+      "timeMs": 5089,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 37,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "103957483446006261695026695340913160964392713940691220923524397653667460858200",
+      "timeMs": 5069,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 37,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "103957483446006261695026695340913160964392713940691220923524397653667460858200",
+      "timeMs": 5076,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 37,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "103957483446006261695026695340913160964392713940691220923524397653667460858200",
+      "timeMs": 5066,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 37,
+      "lifecyclePhase": "queue",
+      "proposalId": "103957483446006261695026695340913160964392713940691220923524397653667460858200",
+      "timeMs": 5055,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 37,
+      "lifecyclePhase": "execute",
+      "proposalId": "103957483446006261695026695340913160964392713940691220923524397653667460858200",
+      "timeMs": 5067,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 38,
+      "lifecyclePhase": "propose",
+      "proposalId": "63980796495338530523135962376751470585971781344570608022227653776267243455138",
+      "timeMs": 4067,
+      "gasUsed": "87380"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 38,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "63980796495338530523135962376751470585971781344570608022227653776267243455138",
+      "timeMs": 5067,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 38,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "63980796495338530523135962376751470585971781344570608022227653776267243455138",
+      "timeMs": 5063,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 38,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "63980796495338530523135962376751470585971781344570608022227653776267243455138",
+      "timeMs": 5064,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 38,
+      "lifecyclePhase": "queue",
+      "proposalId": "63980796495338530523135962376751470585971781344570608022227653776267243455138",
+      "timeMs": 5078,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 38,
+      "lifecyclePhase": "execute",
+      "proposalId": "63980796495338530523135962376751470585971781344570608022227653776267243455138",
+      "timeMs": 4066,
+      "gasUsed": "174990"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 39,
+      "lifecyclePhase": "propose",
+      "proposalId": "102410625533098473736464514289001888754598334904640072464719753643170106772924",
+      "timeMs": 5073,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 39,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "102410625533098473736464514289001888754598334904640072464719753643170106772924",
+      "timeMs": 5057,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 39,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "102410625533098473736464514289001888754598334904640072464719753643170106772924",
+      "timeMs": 5064,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 39,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "102410625533098473736464514289001888754598334904640072464719753643170106772924",
+      "timeMs": 5061,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 39,
+      "lifecyclePhase": "queue",
+      "proposalId": "102410625533098473736464514289001888754598334904640072464719753643170106772924",
+      "timeMs": 5092,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 39,
+      "lifecyclePhase": "execute",
+      "proposalId": "102410625533098473736464514289001888754598334904640072464719753643170106772924",
+      "timeMs": 5083,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 40,
+      "lifecyclePhase": "propose",
+      "proposalId": "65004462450943340607422272593418517971641618193544573644799368299602600217198",
+      "timeMs": 5070,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 40,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "65004462450943340607422272593418517971641618193544573644799368299602600217198",
+      "timeMs": 5077,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 40,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "65004462450943340607422272593418517971641618193544573644799368299602600217198",
+      "timeMs": 5070,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 40,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "65004462450943340607422272593418517971641618193544573644799368299602600217198",
+      "timeMs": 5082,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 40,
+      "lifecyclePhase": "queue",
+      "proposalId": "65004462450943340607422272593418517971641618193544573644799368299602600217198",
+      "timeMs": 5077,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 40,
+      "lifecyclePhase": "execute",
+      "proposalId": "65004462450943340607422272593418517971641618193544573644799368299602600217198",
+      "timeMs": 4075,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 41,
+      "lifecyclePhase": "propose",
+      "proposalId": "20851449454711345444297203383368139907910258115830543480806984073227956721625",
+      "timeMs": 5067,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 41,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "20851449454711345444297203383368139907910258115830543480806984073227956721625",
+      "timeMs": 5086,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 41,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "20851449454711345444297203383368139907910258115830543480806984073227956721625",
+      "timeMs": 5069,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 41,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "20851449454711345444297203383368139907910258115830543480806984073227956721625",
+      "timeMs": 5069,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 41,
+      "lifecyclePhase": "queue",
+      "proposalId": "20851449454711345444297203383368139907910258115830543480806984073227956721625",
+      "timeMs": 5082,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 41,
+      "lifecyclePhase": "execute",
+      "proposalId": "20851449454711345444297203383368139907910258115830543480806984073227956721625",
+      "timeMs": 4081,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 42,
+      "lifecyclePhase": "propose",
+      "proposalId": "105792124798532051771055272272420739164240150204587501627596750815359413887943",
+      "timeMs": 5070,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 42,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "105792124798532051771055272272420739164240150204587501627596750815359413887943",
+      "timeMs": 5066,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 42,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "105792124798532051771055272272420739164240150204587501627596750815359413887943",
+      "timeMs": 5070,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 42,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "105792124798532051771055272272420739164240150204587501627596750815359413887943",
+      "timeMs": 5072,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 42,
+      "lifecyclePhase": "queue",
+      "proposalId": "105792124798532051771055272272420739164240150204587501627596750815359413887943",
+      "timeMs": 5075,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 42,
+      "lifecyclePhase": "execute",
+      "proposalId": "105792124798532051771055272272420739164240150204587501627596750815359413887943",
+      "timeMs": 5071,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 43,
+      "lifecyclePhase": "propose",
+      "proposalId": "51920605856696988393713864283364014941775263764202709189536733214748789043597",
+      "timeMs": 5071,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 43,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "51920605856696988393713864283364014941775263764202709189536733214748789043597",
+      "timeMs": 5056,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 43,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "51920605856696988393713864283364014941775263764202709189536733214748789043597",
+      "timeMs": 5064,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 43,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "51920605856696988393713864283364014941775263764202709189536733214748789043597",
+      "timeMs": 5060,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 43,
+      "lifecyclePhase": "queue",
+      "proposalId": "51920605856696988393713864283364014941775263764202709189536733214748789043597",
+      "timeMs": 5074,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 43,
+      "lifecyclePhase": "execute",
+      "proposalId": "51920605856696988393713864283364014941775263764202709189536733214748789043597",
+      "timeMs": 4066,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 44,
+      "lifecyclePhase": "propose",
+      "proposalId": "52659964193393817573928100445441379053878757746250151543754880579263469946990",
+      "timeMs": 5066,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 44,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "52659964193393817573928100445441379053878757746250151543754880579263469946990",
+      "timeMs": 5063,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 44,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "52659964193393817573928100445441379053878757746250151543754880579263469946990",
+      "timeMs": 5062,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 44,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "52659964193393817573928100445441379053878757746250151543754880579263469946990",
+      "timeMs": 5058,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 44,
+      "lifecyclePhase": "queue",
+      "proposalId": "52659964193393817573928100445441379053878757746250151543754880579263469946990",
+      "timeMs": 5068,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 44,
+      "lifecyclePhase": "execute",
+      "proposalId": "52659964193393817573928100445441379053878757746250151543754880579263469946990",
+      "timeMs": 5065,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 45,
+      "lifecyclePhase": "propose",
+      "proposalId": "21255371696465474142958599727558278786969436148143356236548562233977494430482",
+      "timeMs": 5069,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 45,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "21255371696465474142958599727558278786969436148143356236548562233977494430482",
+      "timeMs": 5062,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 45,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "21255371696465474142958599727558278786969436148143356236548562233977494430482",
+      "timeMs": 5077,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 45,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "21255371696465474142958599727558278786969436148143356236548562233977494430482",
+      "timeMs": 5069,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 45,
+      "lifecyclePhase": "queue",
+      "proposalId": "21255371696465474142958599727558278786969436148143356236548562233977494430482",
+      "timeMs": 5061,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 45,
+      "lifecyclePhase": "execute",
+      "proposalId": "21255371696465474142958599727558278786969436148143356236548562233977494430482",
+      "timeMs": 4068,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 46,
+      "lifecyclePhase": "propose",
+      "proposalId": "92531432971207119083516745030768577871229482799591524188577490279904748014956",
+      "timeMs": 5071,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 46,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "92531432971207119083516745030768577871229482799591524188577490279904748014956",
+      "timeMs": 5067,
+      "gasUsed": "88324"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 46,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "92531432971207119083516745030768577871229482799591524188577490279904748014956",
+      "timeMs": 5066,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 46,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "92531432971207119083516745030768577871229482799591524188577490279904748014956",
+      "timeMs": 5074,
+      "gasUsed": "71224"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 46,
+      "lifecyclePhase": "queue",
+      "proposalId": "92531432971207119083516745030768577871229482799591524188577490279904748014956",
+      "timeMs": 5076,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 46,
+      "lifecyclePhase": "execute",
+      "proposalId": "92531432971207119083516745030768577871229482799591524188577490279904748014956",
+      "timeMs": 5067,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 47,
+      "lifecyclePhase": "propose",
+      "proposalId": "35403450249539716220804636506889830425558362066522205370919863535186968634017",
+      "timeMs": 5069,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 47,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "35403450249539716220804636506889830425558362066522205370919863535186968634017",
+      "timeMs": 5074,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 47,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "35403450249539716220804636506889830425558362066522205370919863535186968634017",
+      "timeMs": 5057,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 47,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "35403450249539716220804636506889830425558362066522205370919863535186968634017",
+      "timeMs": 5076,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 47,
+      "lifecyclePhase": "queue",
+      "proposalId": "35403450249539716220804636506889830425558362066522205370919863535186968634017",
+      "timeMs": 5183,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 47,
+      "lifecyclePhase": "execute",
+      "proposalId": "35403450249539716220804636506889830425558362066522205370919863535186968634017",
+      "timeMs": 4070,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 48,
+      "lifecyclePhase": "propose",
+      "proposalId": "82860906693349877561897598198507444550163287209285948051207629699357545980294",
+      "timeMs": 5064,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 48,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "82860906693349877561897598198507444550163287209285948051207629699357545980294",
+      "timeMs": 4064,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 48,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "82860906693349877561897598198507444550163287209285948051207629699357545980294",
+      "timeMs": 5064,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 48,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "82860906693349877561897598198507444550163287209285948051207629699357545980294",
+      "timeMs": 5082,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 48,
+      "lifecyclePhase": "queue",
+      "proposalId": "82860906693349877561897598198507444550163287209285948051207629699357545980294",
+      "timeMs": 5078,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 48,
+      "lifecyclePhase": "execute",
+      "proposalId": "82860906693349877561897598198507444550163287209285948051207629699357545980294",
+      "timeMs": 4084,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 49,
+      "lifecyclePhase": "propose",
+      "proposalId": "31672565572902503078622072626497399539635830229790839238940201194180041453333",
+      "timeMs": 5068,
+      "gasUsed": "87392"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 49,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "31672565572902503078622072626497399539635830229790839238940201194180041453333",
+      "timeMs": 5077,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 49,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "31672565572902503078622072626497399539635830229790839238940201194180041453333",
+      "timeMs": 5069,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 49,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "31672565572902503078622072626497399539635830229790839238940201194180041453333",
+      "timeMs": 5080,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 49,
+      "lifecyclePhase": "queue",
+      "proposalId": "31672565572902503078622072626497399539635830229790839238940201194180041453333",
+      "timeMs": 5072,
+      "gasUsed": "149353"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 49,
+      "lifecyclePhase": "execute",
+      "proposalId": "31672565572902503078622072626497399539635830229790839238940201194180041453333",
+      "timeMs": 5062,
+      "gasUsed": "175000"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 50,
+      "lifecyclePhase": "propose",
+      "proposalId": "32826868927188992172499181202837990692333816719340402599437467044595121956274",
+      "timeMs": 5089,
+      "gasUsed": "87380"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 50,
+      "lifecyclePhase": "castVote_0",
+      "proposalId": "32826868927188992172499181202837990692333816719340402599437467044595121956274",
+      "timeMs": 5058,
+      "gasUsed": "88336"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 50,
+      "lifecyclePhase": "castVote_1",
+      "proposalId": "32826868927188992172499181202837990692333816719340402599437467044595121956274",
+      "timeMs": 5059,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 50,
+      "lifecyclePhase": "castVote_2",
+      "proposalId": "32826868927188992172499181202837990692333816719340402599437467044595121956274",
+      "timeMs": 5073,
+      "gasUsed": "71236"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 50,
+      "lifecyclePhase": "queue",
+      "proposalId": "32826868927188992172499181202837990692333816719340402599437467044595121956274",
+      "timeMs": 5072,
+      "gasUsed": "149341"
+    },
+    {
+      "operation": "removeGateway",
+      "label": "remove gateway",
+      "run": 50,
+      "lifecyclePhase": "execute",
+      "proposalId": "32826868927188992172499181202837990692333816719340402599437467044595121956274",
+      "timeMs": 4063,
+      "gasUsed": "174990"
+    }
+  ]
+}

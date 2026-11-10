@@ -1,0 +1,8 @@
+{
+  "runAt": "2026-05-27T09:32:50.356Z",
+  "runs": 50,
+  "description": "Gas and latency per phase of full governance lifecycle (50 runs each)",
+  "environment": "Local Ethereum test network",
+  "gasPrice": "20000000000",
+  "benchmarks": []
+}

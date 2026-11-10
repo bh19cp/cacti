@@ -1,0 +1,32 @@
+{
+  "runAt": "2026-05-29T12:46:02.813Z",
+  "description": "Full governance lifecycle benchmark for lockExpirationTime update with 3 gateways",
+  "environment": "Local Ethereum + Besu test networks",
+  "gasPrice": "20 Gwei",
+  "benchmarks": [
+    {
+      "operation": "propagation",
+      "label": "Policy reaches GovernanceManager-Eth",
+      "timeMs": 4198,
+      "gasUsed": "0"
+    },
+    {
+      "operation": "propagation",
+      "label": "Policy reaches GovernanceManager-Besu",
+      "timeMs": 4198,
+      "gasUsed": "0"
+    },
+    {
+      "operation": "propagation",
+      "label": "Policy reaches GovernanceManager-Eth2",
+      "timeMs": 4198,
+      "gasUsed": "0"
+    },
+    {
+      "operation": "propagation",
+      "label": "Fully propagated to ALL 3 managers",
+      "timeMs": 4198,
+      "gasUsed": "0"
+    }
+  ]
+}

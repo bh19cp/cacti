@@ -1,0 +1,488 @@
+{
+  "runAt": "2026-05-17T17:25:13.317Z",
+  "description": "Gas and latency for each phase of the full governance voting lifecycle, per operation",
+  "environment": "Local Ethereum test network",
+  "gasPrice": "20 Gwei",
+  "benchmarks": [
+    {
+      "label": "add \"newParameter\"",
+      "operation": "addParameter",
+      "lifecyclePhase": "propose",
+      "proposalId": "93476738119059470738545540720772811457276037681728974779176171428714382054329",
+      "timeMs": 5131,
+      "gasUsed": "85037"
+    },
+    {
+      "label": "add \"newParameter\" — castVote org #0",
+      "operation": "addParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "93476738119059470738545540720772811457276037681728974779176171428714382054329",
+      "timeMs": 5129,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "add \"newParameter\" — castVote org #1",
+      "operation": "addParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "93476738119059470738545540720772811457276037681728974779176171428714382054329",
+      "timeMs": 5132,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "add \"newParameter\" — castVote org #2",
+      "operation": "addParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "93476738119059470738545540720772811457276037681728974779176171428714382054329",
+      "timeMs": 5147,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "add \"newParameter\"",
+      "operation": "addParameter",
+      "lifecyclePhase": "queue",
+      "proposalId": "93476738119059470738545540720772811457276037681728974779176171428714382054329",
+      "timeMs": 5157,
+      "gasUsed": "146803"
+    },
+    {
+      "label": "add \"newParameter\"",
+      "operation": "addParameter",
+      "lifecyclePhase": "execute",
+      "proposalId": "93476738119059470738545540720772811457276037681728974779176171428714382054329",
+      "timeMs": 4149,
+      "gasUsed": "232527"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60",
+      "operation": "setParameter",
+      "lifecyclePhase": "propose",
+      "proposalId": "98187963798437875775235735515662127047728583407314274698235870045363036445843",
+      "timeMs": 5136,
+      "gasUsed": "85452"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60 — castVote org #0",
+      "operation": "setParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "98187963798437875775235735515662127047728583407314274698235870045363036445843",
+      "timeMs": 4309,
+      "gasUsed": "88324"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60 — castVote org #1",
+      "operation": "setParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "98187963798437875775235735515662127047728583407314274698235870045363036445843",
+      "timeMs": 5139,
+      "gasUsed": "71224"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60 — castVote org #2",
+      "operation": "setParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "98187963798437875775235735515662127047728583407314274698235870045363036445843",
+      "timeMs": 5132,
+      "gasUsed": "71224"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60",
+      "operation": "setParameter",
+      "lifecyclePhase": "queue",
+      "proposalId": "98187963798437875775235735515662127047728583407314274698235870045363036445843",
+      "timeMs": 5142,
+      "gasUsed": "147031"
+    },
+    {
+      "label": "set \"satp.session.lockExpirationTime\" → 60",
+      "operation": "setParameter",
+      "lifecyclePhase": "execute",
+      "proposalId": "98187963798437875775235735515662127047728583407314274698235870045363036445843",
+      "timeMs": 4141,
+      "gasUsed": "106545"
+    },
+    {
+      "label": "remove \"claimFormat\"",
+      "operation": "removeParameter",
+      "lifecyclePhase": "propose",
+      "proposalId": "21195833421537260481787549035212942593632745533784340054827574233058375874868",
+      "timeMs": 5130,
+      "gasUsed": "84464"
+    },
+    {
+      "label": "remove \"claimFormat\" — castVote org #0",
+      "operation": "removeParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "21195833421537260481787549035212942593632745533784340054827574233058375874868",
+      "timeMs": 5122,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "remove \"claimFormat\" — castVote org #1",
+      "operation": "removeParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "21195833421537260481787549035212942593632745533784340054827574233058375874868",
+      "timeMs": 5130,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove \"claimFormat\" — castVote org #2",
+      "operation": "removeParameter",
+      "lifecyclePhase": "castVote",
+      "proposalId": "21195833421537260481787549035212942593632745533784340054827574233058375874868",
+      "timeMs": 5133,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove \"claimFormat\"",
+      "operation": "removeParameter",
+      "lifecyclePhase": "queue",
+      "proposalId": "21195833421537260481787549035212942593632745533784340054827574233058375874868",
+      "timeMs": 5155,
+      "gasUsed": "146144"
+    },
+    {
+      "label": "remove \"claimFormat\"",
+      "operation": "removeParameter",
+      "lifecyclePhase": "execute",
+      "proposalId": "21195833421537260481787549035212942593632745533784340054827574233058375874868",
+      "timeMs": 4133,
+      "gasUsed": "121690"
+    },
+    {
+      "label": "register new org",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "propose",
+      "proposalId": "42642634402654362609242586369665493005403301840003625978691467958499620450627",
+      "timeMs": 4121,
+      "gasUsed": "93109"
+    },
+    {
+      "label": "register new org — castVote org #0",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "42642634402654362609242586369665493005403301840003625978691467958499620450627",
+      "timeMs": 5128,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "register new org — castVote org #1",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "42642634402654362609242586369665493005403301840003625978691467958499620450627",
+      "timeMs": 5138,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "register new org — castVote org #2",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "42642634402654362609242586369665493005403301840003625978691467958499620450627",
+      "timeMs": 5131,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "register new org",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "queue",
+      "proposalId": "42642634402654362609242586369665493005403301840003625978691467958499620450627",
+      "timeMs": 5184,
+      "gasUsed": "158013"
+    },
+    {
+      "label": "register new org",
+      "operation": "registerOrganization",
+      "lifecyclePhase": "execute",
+      "proposalId": "42642634402654362609242586369665493005403301840003625978691467958499620450627",
+      "timeMs": 4145,
+      "gasUsed": "366380"
+    },
+    {
+      "label": "register gateway 0xb5f04FAF…",
+      "operation": "registerGateway",
+      "lifecyclePhase": "propose",
+      "proposalId": "18168568493410449348851293386694370887245157445349863241216497208713533700018",
+      "timeMs": 5124,
+      "gasUsed": "87007"
+    },
+    {
+      "label": "register gateway 0xb5f04FAF… — castVote org #0",
+      "operation": "registerGateway",
+      "lifecyclePhase": "castVote",
+      "proposalId": "18168568493410449348851293386694370887245157445349863241216497208713533700018",
+      "timeMs": 5129,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "register gateway 0xb5f04FAF… — castVote org #1",
+      "operation": "registerGateway",
+      "lifecyclePhase": "castVote",
+      "proposalId": "18168568493410449348851293386694370887245157445349863241216497208713533700018",
+      "timeMs": 5127,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "register gateway 0xb5f04FAF… — castVote org #2",
+      "operation": "registerGateway",
+      "lifecyclePhase": "castVote",
+      "proposalId": "18168568493410449348851293386694370887245157445349863241216497208713533700018",
+      "timeMs": 4130,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "register gateway 0xb5f04FAF…",
+      "operation": "registerGateway",
+      "lifecyclePhase": "queue",
+      "proposalId": "18168568493410449348851293386694370887245157445349863241216497208713533700018",
+      "timeMs": 5146,
+      "gasUsed": "148000"
+    },
+    {
+      "label": "register gateway 0xb5f04FAF…",
+      "operation": "registerGateway",
+      "lifecyclePhase": "execute",
+      "proposalId": "18168568493410449348851293386694370887245157445349863241216497208713533700018",
+      "timeMs": 4133,
+      "gasUsed": "285791"
+    },
+    {
+      "label": "suspend gateway 0x7499f0ce…",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "propose",
+      "proposalId": "93221182263164055577308096404342366142219813808355229747896523779266398209866",
+      "timeMs": 4131,
+      "gasUsed": "87508"
+    },
+    {
+      "label": "suspend gateway 0x7499f0ce… — castVote org #0",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "castVote",
+      "proposalId": "93221182263164055577308096404342366142219813808355229747896523779266398209866",
+      "timeMs": 5123,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "suspend gateway 0x7499f0ce… — castVote org #1",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "castVote",
+      "proposalId": "93221182263164055577308096404342366142219813808355229747896523779266398209866",
+      "timeMs": 5124,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "suspend gateway 0x7499f0ce… — castVote org #2",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "castVote",
+      "proposalId": "93221182263164055577308096404342366142219813808355229747896523779266398209866",
+      "timeMs": 5134,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "suspend gateway 0x7499f0ce…",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "queue",
+      "proposalId": "93221182263164055577308096404342366142219813808355229747896523779266398209866",
+      "timeMs": 5138,
+      "gasUsed": "148622"
+    },
+    {
+      "label": "suspend gateway 0x7499f0ce…",
+      "operation": "setGatewayStatus",
+      "lifecyclePhase": "execute",
+      "proposalId": "93221182263164055577308096404342366142219813808355229747896523779266398209866",
+      "timeMs": 4134,
+      "gasUsed": "108301"
+    },
+    {
+      "label": "remove gateway 0x7499f0ce…",
+      "operation": "removeGateway",
+      "lifecyclePhase": "propose",
+      "proposalId": "30114888575776211424632074525396976780015917686695241443578512074831312272898",
+      "timeMs": 5122,
+      "gasUsed": "86935"
+    },
+    {
+      "label": "remove gateway 0x7499f0ce… — castVote org #0",
+      "operation": "removeGateway",
+      "lifecyclePhase": "castVote",
+      "proposalId": "30114888575776211424632074525396976780015917686695241443578512074831312272898",
+      "timeMs": 4122,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "remove gateway 0x7499f0ce… — castVote org #1",
+      "operation": "removeGateway",
+      "lifecyclePhase": "castVote",
+      "proposalId": "30114888575776211424632074525396976780015917686695241443578512074831312272898",
+      "timeMs": 5120,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove gateway 0x7499f0ce… — castVote org #2",
+      "operation": "removeGateway",
+      "lifecyclePhase": "castVote",
+      "proposalId": "30114888575776211424632074525396976780015917686695241443578512074831312272898",
+      "timeMs": 5122,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove gateway 0x7499f0ce…",
+      "operation": "removeGateway",
+      "lifecyclePhase": "queue",
+      "proposalId": "30114888575776211424632074525396976780015917686695241443578512074831312272898",
+      "timeMs": 5127,
+      "gasUsed": "147964"
+    },
+    {
+      "label": "remove gateway 0x7499f0ce…",
+      "operation": "removeGateway",
+      "lifecyclePhase": "execute",
+      "proposalId": "30114888575776211424632074525396976780015917686695241443578512074831312272898",
+      "timeMs": 3133,
+      "gasUsed": "130400"
+    },
+    {
+      "label": "suspend org 0x1a80d2A7…",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "propose",
+      "proposalId": "22802287015528682379532914166576171081649528605992265489727327276360837763172",
+      "timeMs": 5123,
+      "gasUsed": "87520"
+    },
+    {
+      "label": "suspend org 0x1a80d2A7… — castVote org #0",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "castVote",
+      "proposalId": "22802287015528682379532914166576171081649528605992265489727327276360837763172",
+      "timeMs": 5131,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "suspend org 0x1a80d2A7… — castVote org #1",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "castVote",
+      "proposalId": "22802287015528682379532914166576171081649528605992265489727327276360837763172",
+      "timeMs": 5131,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "suspend org 0x1a80d2A7… — castVote org #2",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "castVote",
+      "proposalId": "22802287015528682379532914166576171081649528605992265489727327276360837763172",
+      "timeMs": 5136,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "suspend org 0x1a80d2A7…",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "queue",
+      "proposalId": "22802287015528682379532914166576171081649528605992265489727327276360837763172",
+      "timeMs": 5139,
+      "gasUsed": "148562"
+    },
+    {
+      "label": "suspend org 0x1a80d2A7…",
+      "operation": "setOrganizationStatus",
+      "lifecyclePhase": "execute",
+      "proposalId": "22802287015528682379532914166576171081649528605992265489727327276360837763172",
+      "timeMs": 4140,
+      "gasUsed": "108234"
+    },
+    {
+      "label": "remove+reclaim org 0x5129587f…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "propose",
+      "proposalId": "72376726880320524063240367250794357352668945364414069427038473386287582364819",
+      "timeMs": 5130,
+      "gasUsed": "93757"
+    },
+    {
+      "label": "remove+reclaim org 0x5129587f… — castVote org #0",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "72376726880320524063240367250794357352668945364414069427038473386287582364819",
+      "timeMs": 5119,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "remove+reclaim org 0x5129587f… — castVote org #1",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "72376726880320524063240367250794357352668945364414069427038473386287582364819",
+      "timeMs": 5121,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove+reclaim org 0x5129587f… — castVote org #2",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "72376726880320524063240367250794357352668945364414069427038473386287582364819",
+      "timeMs": 4123,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove+reclaim org 0x5129587f…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "queue",
+      "proposalId": "72376726880320524063240367250794357352668945364414069427038473386287582364819",
+      "timeMs": 5142,
+      "gasUsed": "158457"
+    },
+    {
+      "label": "remove+reclaim org 0x5129587f…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "execute",
+      "proposalId": "72376726880320524063240367250794357352668945364414069427038473386287582364819",
+      "timeMs": 4159,
+      "gasUsed": "168709"
+    },
+    {
+      "label": "remove+burn org 0x83E98106…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "propose",
+      "proposalId": "19539156684105752087687154112538338837661634543948477315305458029943007995320",
+      "timeMs": 5140,
+      "gasUsed": "92884"
+    },
+    {
+      "label": "remove+burn org 0x83E98106… — castVote org #0",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "19539156684105752087687154112538338837661634543948477315305458029943007995320",
+      "timeMs": 5120,
+      "gasUsed": "88336"
+    },
+    {
+      "label": "remove+burn org 0x83E98106… — castVote org #1",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "19539156684105752087687154112538338837661634543948477315305458029943007995320",
+      "timeMs": 5121,
+      "gasUsed": "68436"
+    },
+    {
+      "label": "remove+burn org 0x83E98106… — castVote org #2",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "castVote",
+      "proposalId": "19539156684105752087687154112538338837661634543948477315305458029943007995320",
+      "timeMs": 5122,
+      "gasUsed": "71236"
+    },
+    {
+      "label": "remove+burn org 0x83E98106…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "queue",
+      "proposalId": "19539156684105752087687154112538338837661634543948477315305458029943007995320",
+      "timeMs": 4164,
+      "gasUsed": "157574"
+    },
+    {
+      "label": "remove+burn org 0x83E98106…",
+      "operation": "removeOrganization",
+      "lifecyclePhase": "execute",
+      "proposalId": "19539156684105752087687154112538338837661634543948477315305458029943007995320",
+      "timeMs": 4163,
+      "gasUsed": "191272"
+    }
+  ]
+}
